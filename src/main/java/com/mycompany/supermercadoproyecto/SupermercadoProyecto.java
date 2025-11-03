@@ -12,7 +12,7 @@ public class SupermercadoProyecto {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        System.out.println("mario te voy a besar...");
+        System.out.println("mario te voy a aprobar...");
         System.out.println("MARIO DE 40");
     }
 }
