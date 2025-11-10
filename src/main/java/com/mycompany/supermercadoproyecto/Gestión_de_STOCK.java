@@ -244,7 +244,7 @@ public class Gestión_de_STOCK extends javax.swing.JPanel {
             c2.setVisible(true);
 
             // Opcional: cerrar la ventana actual
-            this.dispose();
+           
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
