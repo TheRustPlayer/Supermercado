@@ -119,6 +119,11 @@ pnlHome.repaint();
         pnlBorde.add(btnHome);
 
         btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recargar.png"))); // NOI18N
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarActionPerformed(evt);
+            }
+        });
         pnlBorde.add(btnRecargar);
 
         btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
@@ -161,6 +166,11 @@ pnlHome.repaint();
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modificación.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -174,6 +184,11 @@ pnlHome.repaint();
         btnBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/baja.png"))); // NOI18N
         btnBaja.setText("Baja");
         btnBaja.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -315,6 +330,161 @@ pnlHome.repaint();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAltaActionPerformed
+
+    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
+    this.dispose(); // Cierra la ventana actual
+    Home nuevaVentana = new Home(); // Crea una nueva instancia
+    nuevaVentana.setVisible(true); // Muestra la nueva
+    nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
+    }//GEN-LAST:event_btnRecargarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+     // Iconos
+    ImageIcon iconDni = new ImageIcon(getClass().getResource("/dni.png"));
+    ImageIcon iconPass = new ImageIcon(getClass().getResource("/contraseña.png"));
+    ImageIcon iconCheck = new ImageIcon(getClass().getResource("/check.png"));
+
+    // Campos
+    JTextField txtDni = new JTextField();
+    JTextField txtNuevoNombre = new JTextField();
+    JPasswordField txtNuevaPass = new JPasswordField();
+
+    // Tamaño de campos
+    Dimension fieldSize = new Dimension(240, 28);
+    txtDni.setPreferredSize(fieldSize);
+    txtNuevoNombre.setPreferredSize(fieldSize);
+    txtNuevaPass.setPreferredSize(fieldSize);
+
+    // Panel con GridBagLayout
+    JPanel panel = new JPanel(new GridBagLayout());
+    panel.setBackground(new Color(245, 245, 245));
+    panel.setPreferredSize(new Dimension(450, 200));
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+    gbc.anchor = GridBagConstraints.WEST;
+
+    // ===== Fila 1: DNI =====
+    gbc.gridx = 0; gbc.gridy = 0;
+    panel.add(new JLabel(iconDni), gbc);
+    gbc.gridx = 1;
+    panel.add(new JLabel("DNI del empleado:"), gbc);
+    gbc.gridx = 2;
+    panel.add(txtDni, gbc);
+
+    // ===== Fila 2: Nuevo nombre =====
+    gbc.gridx = 0; gbc.gridy = 1;
+    panel.add(new JLabel(iconDni), gbc);
+    gbc.gridx = 1;
+    panel.add(new JLabel("Nuevo nombre:"), gbc);
+    gbc.gridx = 2;
+    panel.add(txtNuevoNombre, gbc);
+
+    // ===== Fila 3: Nueva contraseña =====
+    gbc.gridx = 0; gbc.gridy = 2;
+    panel.add(new JLabel(iconPass), gbc);
+    gbc.gridx = 1;
+    panel.add(new JLabel("Nueva contraseña:"), gbc);
+    gbc.gridx = 2;
+    panel.add(txtNuevaPass, gbc);
+
+    // Mostrar JOptionPane
+    int option = JOptionPane.showConfirmDialog(
+        this,
+        panel,
+        "Modificar empleado",
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE
+    );
+
+    if (option == JOptionPane.OK_OPTION) {
+        String dni = txtDni.getText().trim();
+        String nuevoNombre = txtNuevoNombre.getText().trim();
+        String nuevaPass = new String(txtNuevaPass.getPassword());
+
+        if (dni.isEmpty() || nuevoNombre.isEmpty() || nuevaPass.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Todos los campos son obligatorios.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Mostrar mensaje simulado de modificación
+        JOptionPane.showMessageDialog(this,
+            "Empleado con DNI " + dni + " modificado correctamente.\n"
+            + "Nuevo nombre: " + nuevoNombre,
+            "Modificación realizada",
+            JOptionPane.INFORMATION_MESSAGE,
+            iconCheck);
+          }
+
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+   // Iconos
+    ImageIcon iconDni = new ImageIcon(getClass().getResource("/dni.png"));
+    ImageIcon iconCheck = new ImageIcon(getClass().getResource("/check.png"));
+
+    // Campo para el DNI
+    JTextField txtDni = new JTextField();
+    txtDni.setPreferredSize(new Dimension(260, 28)); // Más ancho
+
+    // Panel principal con GridBagLayout
+    JPanel panel = new JPanel(new GridBagLayout());
+    panel.setBackground(new Color(245, 245, 245));
+    panel.setPreferredSize(new Dimension(500, 180)); // Más grande horizontalmente
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(15, 15, 15, 15);
+    gbc.anchor = GridBagConstraints.WEST;
+
+    // ===== Fila 1: DNI =====
+    gbc.gridx = 0; gbc.gridy = 0;
+    panel.add(new JLabel(iconDni), gbc);
+    gbc.gridx = 1;
+    panel.add(new JLabel("DNI del empleado a eliminar:"), gbc);
+    gbc.gridx = 2;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.weightx = 1.0;
+    panel.add(txtDni, gbc);
+
+    // Mostrar JOptionPane
+    int option = JOptionPane.showConfirmDialog(
+        this,
+        panel,
+        "Eliminar empleado",
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE
+    );
+
+    if (option == JOptionPane.OK_OPTION) {
+        String dni = txtDni.getText().trim();
+
+        if (dni.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Debes introducir el DNI del empleado.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Confirmación antes de eliminar
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "¿Seguro que quieres eliminar al empleado con DNI " + dni + "?",
+            "Confirmar eliminación",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this,
+                "Empleado con DNI " + dni + " eliminado correctamente.",
+                "Eliminación completada",
+                JOptionPane.INFORMATION_MESSAGE,
+                iconCheck);
+        }
+    }
+    }//GEN-LAST:event_btnBajaActionPerformed
 
     /**
      * @param args the command line arguments

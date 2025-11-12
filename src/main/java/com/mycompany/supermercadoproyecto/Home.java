@@ -83,9 +83,9 @@ pnlHome.repaint();
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlBorde = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
+        btnRecargar = new javax.swing.JButton();
+        btnOpciones = new javax.swing.JButton();
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
         ;
@@ -102,14 +102,24 @@ pnlHome.repaint();
         pnlBorde.setPreferredSize(new java.awt.Dimension(800, 25));
         pnlBorde.setLayout(new javax.swing.BoxLayout(pnlBorde, javax.swing.BoxLayout.LINE_AXIS));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
-        pnlBorde.add(jButton1);
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        pnlBorde.add(btnHome);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recargar.png"))); // NOI18N
-        pnlBorde.add(jButton2);
+        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recargar.png"))); // NOI18N
+        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecargarActionPerformed(evt);
+            }
+        });
+        pnlBorde.add(btnRecargar);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
-        pnlBorde.add(jButton3);
+        btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
+        pnlBorde.add(btnOpciones);
 
         pnlPrincipal.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
 
@@ -130,6 +140,11 @@ pnlHome.repaint();
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventas.png"))); // NOI18N
         btnVentas.setText("Acceso a ventas");
         btnVentas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -156,6 +171,11 @@ pnlHome.repaint();
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
         btnClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -180,6 +200,28 @@ pnlHome.repaint();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    Home home = new Home();
+    this.dispose();
+    home.setVisible(true);
+    home.setLocationRelativeTo(null); // Centra la ventana        
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+   
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
+    this.dispose();
+    Home nuevaVentana = new Home(); 
+    nuevaVentana.setVisible(true); // Muestra la nueva
+    nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
+    }//GEN-LAST:event_btnRecargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,11 +251,11 @@ pnlHome.repaint();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnOpciones;
+    private javax.swing.JButton btnRecargar;
     private javax.swing.JButton btnStock;
     private javax.swing.JButton btnVentas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlHome;
