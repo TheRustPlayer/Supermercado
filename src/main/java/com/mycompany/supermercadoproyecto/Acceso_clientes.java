@@ -11,7 +11,7 @@ import java.awt.Color;
  * @author MEDAC
  */
 public class Acceso_clientes extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Acceso_clientes.class.getName());
 
     /**
@@ -43,8 +43,8 @@ public class Acceso_clientes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDNI = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -91,7 +91,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = -4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -133,7 +133,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 72;
         gridBagConstraints.ipady = 47;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -141,6 +141,16 @@ public class Acceso_clientes extends javax.swing.JFrame {
         pnlPantalla.add(jButton3, gridBagConstraints);
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtNombre.setForeground(java.awt.Color.gray);
+        txtNombre.setText("Introduce el nombre del cliente...");
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombre(evt);
@@ -150,37 +160,57 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 559;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 426;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(72, 12, 0, 0);
         pnlPantalla.add(txtNombre, gridBagConstraints);
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField2.setText("Introduce los apellidos del cliente.............");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtApellido.setForeground(java.awt.Color.gray);
+        txtApellido.setText("Introduce el apellido del cliente...");
+        txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusLost(evt);
+            }
+        });
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtApellido(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 345;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
-        pnlPantalla.add(jTextField2, gridBagConstraints);
+        pnlPantalla.add(txtApellido, gridBagConstraints);
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField3.setText("Introduce el DNI del cliente............");
+        txtDNI.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtDNI.setForeground(java.awt.Color.gray);
+        txtDNI.setText("Introduce el DNI del cliente...");
+        txtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDNIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDNIFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 387;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 60, 0);
-        pnlPantalla.add(jTextField3, gridBagConstraints);
+        pnlPantalla.add(txtDNI, gridBagConstraints);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (14).png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -212,7 +242,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,19 +251,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {
-    if (txtNombre.getText().equals("Escribe tu nombre de usuario")) {
-        txtNombre.setText("");
-        txtNombre.setForeground(Color.BLACK);
-    }
-  
-}
-private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {
-    if (txtNombre.getText().isEmpty()) {
-        txtNombre.setForeground(Color.GRAY);
-        txtNombre.setText("Escribe tu nombre de usuario");
-    }
-}
+
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         Home home = new Home();
         home.setVisible(true);
@@ -258,14 +276,60 @@ private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtApellido(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtApellido
 
     private void txtNombre(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtNombre
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        if (txtNombre.getText().equals("Introduce el nombre del cliente...")) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        if (txtNombre.getText().isEmpty()) {
+            txtNombre.setForeground(Color.GRAY);
+            txtNombre.setText("Introduce el nombre del cliente...");
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
+        // TODO add your handling code here:
+         if (txtApellido.getText().equals("Introduce el apellido del cliente...")) {
+            txtApellido.setText("");
+            txtApellido.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtApellidoFocusGained
+
+    private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
+        // TODO add your handling code here:
+         if (txtApellido.getText().isEmpty()) {
+            txtApellido.setForeground(Color.GRAY);
+            txtApellido.setText("Introduce el apellido del cliente...");
+        }
+    }//GEN-LAST:event_txtApellidoFocusLost
+
+    private void txtDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusGained
+        // TODO add your handling code here:
+         if (txtDNI.getText().equals("Introduce el DNI del cliente...")) {
+            txtDNI.setText("");
+            txtDNI.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtDNIFocusGained
+
+    private void txtDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusLost
+        // TODO add your handling code here:
+        if (txtDNI.getText().isEmpty()) {
+            txtDNI.setForeground(Color.GRAY);
+            txtDNI.setText("Introduce el apellido del cliente...");
+        }
+    }//GEN-LAST:event_txtDNIFocusLost
 
     /**
      * @param args the command line arguments
@@ -303,11 +367,11 @@ private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlPantalla;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
