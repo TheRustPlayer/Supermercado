@@ -4,6 +4,8 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import java.awt.Color;
+
 /**
  *
  * @author MEDAC
@@ -40,7 +42,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -138,21 +140,20 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(56, 64, 0, 97);
         pnlPantalla.add(jButton3, gridBagConstraints);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField1.setText("Introduce el nombre del cliente.........");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNombre(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 345;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 559;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(72, 12, 0, 0);
-        pnlPantalla.add(jTextField1, gridBagConstraints);
+        pnlPantalla.add(txtNombre, gridBagConstraints);
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jTextField2.setText("Introduce los apellidos del cliente.............");
@@ -166,7 +167,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 345;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
         pnlPantalla.add(jTextField2, gridBagConstraints);
 
@@ -176,7 +177,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 345;
+        gridBagConstraints.ipadx = 387;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 60, 0);
         pnlPantalla.add(jTextField3, gridBagConstraints);
@@ -220,7 +221,19 @@ public class Acceso_clientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {
+    if (txtNombre.getText().equals("Escribe tu nombre de usuario")) {
+        txtNombre.setText("");
+        txtNombre.setForeground(Color.BLACK);
+    }
+  
+}
+private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {
+    if (txtNombre.getText().isEmpty()) {
+        txtNombre.setForeground(Color.GRAY);
+        txtNombre.setText("Escribe tu nombre de usuario");
+    }
+}
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         Home home = new Home();
         home.setVisible(true);
@@ -249,10 +262,10 @@ public class Acceso_clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNombre(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNombre
 
     /**
      * @param args the command line arguments
@@ -290,11 +303,11 @@ public class Acceso_clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlPantalla;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
