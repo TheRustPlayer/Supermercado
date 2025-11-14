@@ -41,6 +41,8 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pnlBorde = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
@@ -54,6 +56,10 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         gestionarEmpleadosBtn = new javax.swing.JButton();
         gestionProveedoresBtn = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -110,16 +116,18 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(jPanel13, gridBagConstraints);
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massi-cuadrado-100.jpg"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(100, 100));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel4.add(jLabel2, gridBagConstraints);
+
+        jPanel14.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel14, new java.awt.GridBagConstraints());
 
@@ -177,17 +185,33 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel8.setLayout(new java.awt.GridLayout());
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        jLabel3.setText("jLabel3");
+        jLabel3.setPreferredSize(new java.awt.Dimension(85, 16));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        jPanel9.add(jLabel3, gridBagConstraints);
+
+        jLabel4.setText("jLabel4");
+        jLabel4.setPreferredSize(new java.awt.Dimension(85, 16));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        jPanel9.add(jLabel4, gridBagConstraints);
+
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(85, 16));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
+        jPanel9.add(jLabel5, gridBagConstraints);
+
+        jPanel8.add(jPanel9);
 
         jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
@@ -197,11 +221,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 605, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGap(0, 283, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel10, java.awt.BorderLayout.CENTER);
@@ -274,6 +298,10 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton gestionarEmpleadosBtn;
     private javax.swing.JButton informesBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -282,10 +310,12 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreAdmJlb;
     private javax.swing.JPanel pnlBorde;
