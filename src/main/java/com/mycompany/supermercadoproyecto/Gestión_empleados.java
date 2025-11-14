@@ -31,6 +31,7 @@ public class Gestión_empleados extends javax.swing.JFrame {
      */
     public Gestión_empleados() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
        // Aseguramos layout de pnlHome
 GridBagLayout layout = (GridBagLayout) pnlHome.getLayout();
 pnlHome.remove(btnAlta);

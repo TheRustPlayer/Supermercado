@@ -23,6 +23,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
        // Aseguramos layout de pnlHome
 GridBagLayout layout = (GridBagLayout) pnlHome.getLayout();
 pnlHome.remove(btnVentas);

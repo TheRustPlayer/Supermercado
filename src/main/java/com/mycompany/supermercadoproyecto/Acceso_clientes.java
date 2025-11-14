@@ -19,6 +19,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
      */
     public Acceso_clientes() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
