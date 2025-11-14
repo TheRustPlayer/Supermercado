@@ -35,7 +35,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        nombreAdmJlb = new javax.swing.JLabel();
+        dniAdministradorJlb = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         pnlBorde = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
@@ -73,29 +77,33 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(440, 100));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel12.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setPreferredSize(new java.awt.Dimension(155, 100));
+        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
+
+        nombreAdmJlb.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nombreAdmJlb.setForeground(new java.awt.Color(51, 51, 51));
+        nombreAdmJlb.setText("ADMINISTRADOR...");
+        jPanel2.add(nombreAdmJlb);
+
+        dniAdministradorJlb.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        dniAdministradorJlb.setForeground(new java.awt.Color(51, 51, 51));
+        dniAdministradorJlb.setText("NIF/DNI...");
+        jPanel2.add(dniAdministradorJlb);
+
+        jPanel12.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel12, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel13.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel13.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Herramientas de Administrador");
+        jPanel13.add(jLabel1, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -106,11 +114,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel14, new java.awt.GridBagConstraints());
@@ -168,6 +176,8 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
+        jPanel8.setBackground(new java.awt.Color(51, 51, 51));
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -181,11 +191,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
+        jPanel10.setBackground(new java.awt.Color(153, 153, 153));
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 897, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +212,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1155, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,21 +269,25 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
+    private javax.swing.JLabel dniAdministradorJlb;
     private javax.swing.JButton gestionProveedoresBtn;
     private javax.swing.JButton gestionarEmpleadosBtn;
     private javax.swing.JButton informesBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nombreAdmJlb;
     private javax.swing.JPanel pnlBorde;
     // End of variables declaration//GEN-END:variables
 }
