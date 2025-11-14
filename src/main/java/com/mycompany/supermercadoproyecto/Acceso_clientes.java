@@ -4,12 +4,14 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import java.awt.Color;
+
 /**
  *
  * @author MEDAC
  */
 public class Acceso_clientes extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Acceso_clientes.class.getName());
 
     /**
@@ -27,6 +29,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlBorde = new javax.swing.JPanel();
@@ -39,9 +42,9 @@ public class Acceso_clientes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDNI = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -80,17 +83,44 @@ public class Acceso_clientes extends javax.swing.JFrame {
 
         pnlPrincipal.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
 
+        pnlPantalla.setLayout(new java.awt.GridBagLayout());
+
         jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Acceso a clientes");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 9;
+        gridBagConstraints.ipady = -4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 118, 0, 0);
+        pnlPantalla.add(jLabel2, gridBagConstraints);
 
         jButton1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jButton1.setText("Añadir");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 89;
+        gridBagConstraints.ipady = 47;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(56, 12, 0, 0);
+        pnlPantalla.add(jButton1, gridBagConstraints);
 
         jButton2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jButton2.setText("Modificar");
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 61;
+        gridBagConstraints.ipady = 47;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(56, 87, 0, 0);
+        pnlPantalla.add(jButton2, gridBagConstraints);
 
         jButton3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jButton3.setText("Eliminar");
@@ -100,80 +130,111 @@ public class Acceso_clientes extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 72;
+        gridBagConstraints.ipady = 47;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(56, 64, 0, 97);
+        pnlPantalla.add(jButton3, gridBagConstraints);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField1.setText("Introduce el nombre del cliente.........");
-
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField2.setText("Introduce los apellidos del cliente.............");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtNombre.setForeground(java.awt.Color.gray);
+        txtNombre.setText("Introduce el nombre del cliente...");
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
             }
         });
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombre(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 426;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(72, 12, 0, 0);
+        pnlPantalla.add(txtNombre, gridBagConstraints);
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField3.setText("Introduce el DNI del cliente............");
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtApellido.setForeground(java.awt.Color.gray);
+        txtApellido.setText("Introduce el apellido del cliente...");
+        txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusLost(evt);
+            }
+        });
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellido(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 345;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
+        pnlPantalla.add(txtApellido, gridBagConstraints);
 
-        jLabel1.setText("jLabel1");
+        txtDNI.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtDNI.setForeground(java.awt.Color.gray);
+        txtDNI.setText("Introduce el DNI del cliente...");
+        txtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDNIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDNIFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 387;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 12, 60, 0);
+        pnlPantalla.add(txtDNI, gridBagConstraints);
 
-        jLabel3.setText("jLabel3");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (14).png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 39, 0, 0);
+        pnlPantalla.add(jLabel1, gridBagConstraints);
 
-        jLabel4.setText("jLabel4");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (15).png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 39, 0, 0);
+        pnlPantalla.add(jLabel3, gridBagConstraints);
 
-        javax.swing.GroupLayout pnlPantallaLayout = new javax.swing.GroupLayout(pnlPantalla);
-        pnlPantalla.setLayout(pnlPantallaLayout);
-        pnlPantallaLayout.setHorizontalGroup(
-            pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPantallaLayout.createSequentialGroup()
-                .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPantallaLayout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlPantallaLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(27, 27, 27)
-                        .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPantallaLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(95, 95, 95)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        pnlPantallaLayout.setVerticalGroup(
-            pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPantallaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (16).png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 39, 60, 0);
+        pnlPantalla.add(jLabel4, gridBagConstraints);
 
         pnlPrincipal.add(pnlPantalla, java.awt.BorderLayout.CENTER);
 
@@ -181,7 +242,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +276,60 @@ public class Acceso_clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtApellido(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtApellido
+
+    private void txtNombre(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtNombre
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        if (txtNombre.getText().equals("Introduce el nombre del cliente...")) {
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        if (txtNombre.getText().isEmpty()) {
+            txtNombre.setForeground(Color.GRAY);
+            txtNombre.setText("Introduce el nombre del cliente...");
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
+        // TODO add your handling code here:
+         if (txtApellido.getText().equals("Introduce el apellido del cliente...")) {
+            txtApellido.setText("");
+            txtApellido.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtApellidoFocusGained
+
+    private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
+        // TODO add your handling code here:
+         if (txtApellido.getText().isEmpty()) {
+            txtApellido.setForeground(Color.GRAY);
+            txtApellido.setText("Introduce el apellido del cliente...");
+        }
+    }//GEN-LAST:event_txtApellidoFocusLost
+
+    private void txtDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusGained
+        // TODO add your handling code here:
+         if (txtDNI.getText().equals("Introduce el DNI del cliente...")) {
+            txtDNI.setText("");
+            txtDNI.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtDNIFocusGained
+
+    private void txtDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusLost
+        // TODO add your handling code here:
+        if (txtDNI.getText().isEmpty()) {
+            txtDNI.setForeground(Color.GRAY);
+            txtDNI.setText("Introduce el apellido del cliente...");
+        }
+    }//GEN-LAST:event_txtDNIFocusLost
 
     /**
      * @param args the command line arguments
@@ -255,11 +367,11 @@ public class Acceso_clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlPantalla;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
