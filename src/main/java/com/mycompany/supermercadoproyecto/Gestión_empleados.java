@@ -333,7 +333,7 @@ pnlHome.repaint();
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
     this.dispose(); // Cierra la ventana actual
-    Home nuevaVentana = new Home(); // Crea una nueva instancia
+    Gestión_empleados nuevaVentana = new Gestión_empleados(); // Crea una nueva instancia
     nuevaVentana.setVisible(true); // Muestra la nueva
     nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
