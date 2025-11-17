@@ -534,7 +534,7 @@ public class GestionarStock extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         JOptionPane.showMessageDialog(
             this,
-            "En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. .",
+            "En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. ",
             "Operación completada",
             JOptionPane.INFORMATION_MESSAGE
     );

@@ -135,14 +135,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String dniCorrecto = "12345678A";
-    String passCorrecta = "1234";
+    String dniUsuario= "12345678A";
+    String passUsuario = "1234";
+    String dniAdmin= "123456789A";
+    String passAdmin = "12345";
 
     // Obtener datos introducidos
     String dniIntroducido = jTextField1.getText();
     String passIntroducida = jTextField2.getText(); // ← ESTE ES EL CAMBIO IMPORTANTE
 
-    if (dniIntroducido.equals(dniCorrecto) && passIntroducida.equals(passCorrecta)) {
+    if (dniIntroducido.equals(dniUsuario) && passIntroducida.equals(passUsuario)) {
 
         JOptionPane.showMessageDialog(this, "Inicio de sesión correcto");
 
@@ -160,7 +162,28 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
 
-    } else {
+    }
+    else if(dniIntroducido.equals(dniAdmin) && passIntroducida.equals(passAdmin)){
+        JOptionPane.showMessageDialog(this, "Inicio de sesión correcto");
+
+        try {
+            HerramientasAdministrador ventanaAdmin = new HerramientasAdministrador();
+            ventanaAdmin.setVisible(true);
+            ventanaAdmin.setLocationRelativeTo(null);
+            this.dispose();
+        } 
+        catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                "Error al abrir Home: " + ex.getMessage(),
+                "ERROR",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
+    
+    else {
         JOptionPane.showMessageDialog(this,
             "DNI o contraseña incorrectos",
             "Error",
