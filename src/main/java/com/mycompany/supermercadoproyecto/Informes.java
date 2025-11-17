@@ -252,7 +252,10 @@ public class Informes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecargarActionPerformed
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
-        // TODO add your handling code here:
+        HerramientasAdministrador herramientas = new HerramientasAdministrador();
+    this.dispose();
+    herramientas.setVisible(true);
+    herramientas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnOpcionesActionPerformed
 
     /**

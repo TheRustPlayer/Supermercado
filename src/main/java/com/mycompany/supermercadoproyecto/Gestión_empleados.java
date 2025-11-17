@@ -128,6 +128,11 @@ pnlHome.repaint();
         pnlBorde.add(btnRecargar);
 
         btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
+        btnOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpcionesActionPerformed(evt);
+            }
+        });
         pnlBorde.add(btnOpciones);
 
         pnlPrincipal.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
@@ -486,6 +491,13 @@ pnlHome.repaint();
         }
     }
     }//GEN-LAST:event_btnBajaActionPerformed
+
+    private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
+    HerramientasAdministrador herramientas = new HerramientasAdministrador();
+    this.dispose();
+    herramientas.setVisible(true);
+    herramientas.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnOpcionesActionPerformed
 
     /**
      * @param args the command line arguments
