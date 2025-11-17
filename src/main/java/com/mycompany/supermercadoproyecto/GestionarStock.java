@@ -4,7 +4,18 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -253,9 +264,19 @@ public class GestionarStock extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jButton4.setText("Añadir Oferta");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jButton5.setText("Quitar Oferta");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -380,6 +401,119 @@ public class GestionarStock extends javax.swing.JFrame {
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    
+    // ==========================
+    //  ICONO DEL PRODUCTO
+    // ==========================
+    ImageIcon imgProducto = null;
+    try {
+        imgProducto = new ImageIcon(getClass().getResource("/cocacola.png"));
+    } catch (Exception e) {
+        System.out.println("Error cargando imagen: " + e.getMessage());
+    }
+
+    // ==========================
+    //  CAMPOS
+    // ==========================
+    Dimension fieldSize = new Dimension(140, 28);
+
+    JTextField txtMulti1 = new JTextField();
+    txtMulti1.setPreferredSize(new Dimension(50, 28));
+
+    JTextField txtMulti2 = new JTextField();
+    txtMulti2.setPreferredSize(new Dimension(50, 28));
+
+    JTextField txtDescuento = new JTextField();
+    txtDescuento.setPreferredSize(fieldSize);
+
+
+    // ==========================
+    //  PANEL PRINCIPAL
+    // ==========================
+    JPanel panel = new JPanel(new GridBagLayout());
+    panel.setBackground(Color.WHITE);
+    panel.setPreferredSize(new Dimension(550, 270));
+
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+    gbc.anchor = GridBagConstraints.WEST;
+
+    // ==========================
+    //  IMAGEN IZQUIERDA
+    // ==========================
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridheight = 5;
+    if (imgProducto != null) panel.add(new JLabel(imgProducto), gbc);
+    gbc.gridheight = 1;
+
+    // ==========================
+    //  Multiplicador
+    // ==========================
+    gbc.gridx = 1; gbc.gridy = 0;
+    panel.add(new JLabel("Multiplicador:"), gbc);
+
+    JPanel pMultiplicador = new JPanel();
+    pMultiplicador.setOpaque(false);
+    pMultiplicador.add(txtMulti1);
+    pMultiplicador.add(new JLabel(" x "));
+    pMultiplicador.add(txtMulti2);
+
+    gbc.gridx = 2;
+    gbc.gridwidth = 2;
+    panel.add(pMultiplicador, gbc);
+    gbc.gridwidth = 1;
+
+
+    // ==========================
+    //  Descuento
+    // ==========================
+    gbc.gridx = 1; 
+    gbc.gridy = 1;
+    panel.add(new JLabel("Descuento:"), gbc);
+
+    JPanel pDescuento = new JPanel();
+    pDescuento.setOpaque(false);
+    pDescuento.add(txtDescuento);
+    pDescuento.add(new JLabel("%"));
+
+    gbc.gridx = 2;
+    gbc.gridwidth = 2;
+    panel.add(pDescuento, gbc);
+    gbc.gridwidth = 1;
+
+
+    // ==========================
+    //  MOSTRAR JOPTIONPANE
+    // ==========================
+    int opcion = JOptionPane.showConfirmDialog(
+            this,
+            panel,
+            "Añadir oferta",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.PLAIN_MESSAGE
+    );
+
+    if (opcion == JOptionPane.OK_OPTION) {
+        JOptionPane.showMessageDialog(this, "Oferta añadida (simulado)");
+    }
+
+
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JOptionPane.showMessageDialog(
+            this,
+            "La oferta se ha quitado correctamente.",
+            "Operación completada",
+            JOptionPane.INFORMATION_MESSAGE
+    );
+
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
