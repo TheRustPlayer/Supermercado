@@ -35,8 +35,8 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        contenedorPrincipal = new javax.swing.JPanel();
+        contenedorArriba = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -51,7 +51,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
         btnOpciones = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        contenedorAbajo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel11 = new javax.swing.JPanel();
         accesoVentasBtn = new javax.swing.JButton();
@@ -64,13 +64,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        listaPromocionesReportes = new javax.swing.JList<>();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        listaStockReportes = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listaEmpleadosReportes = new javax.swing.JList<>();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList6 = new javax.swing.JList<>();
+        listaproductosReportes = new javax.swing.JList<>();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -92,9 +92,9 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        contenedorPrincipal.setLayout(new java.awt.BorderLayout());
 
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        contenedorArriba.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setMaximumSize(new java.awt.Dimension(200, 200));
         jPanel1.setPreferredSize(new java.awt.Dimension(440, 100));
@@ -147,7 +147,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jPanel1.add(jPanel14, new java.awt.GridBagConstraints());
 
-        jPanel7.add(jPanel1, java.awt.BorderLayout.CENTER);
+        contenedorArriba.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pnlBorde.setBackground(new java.awt.Color(204, 204, 204));
         pnlBorde.setPreferredSize(new java.awt.Dimension(800, 25));
@@ -170,27 +170,47 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         pnlBorde.add(btnRecargar);
 
         btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
+        btnOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpcionesActionPerformed(evt);
+            }
+        });
         pnlBorde.add(btnOpciones);
 
-        jPanel7.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
+        contenedorArriba.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
 
-        jPanel5.add(jPanel7, java.awt.BorderLayout.PAGE_START);
+        contenedorPrincipal.add(contenedorArriba, java.awt.BorderLayout.PAGE_START);
 
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        contenedorAbajo.setLayout(new java.awt.BorderLayout());
 
         jPanel11.setLayout(new java.awt.GridLayout(0, 1));
 
         accesoVentasBtn.setText("Acceso a ventas");
         accesoVentasBtn.setPreferredSize(new java.awt.Dimension(100, 30));
+        accesoVentasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accesoVentasBtnActionPerformed(evt);
+            }
+        });
         jPanel11.add(accesoVentasBtn);
 
         informesBtn.setText("Informes");
         jPanel11.add(informesBtn);
 
         StockBtn.setText("Stock De La Tienda");
+        StockBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StockBtnActionPerformed(evt);
+            }
+        });
         jPanel11.add(StockBtn);
 
         gestionarEmpleadosBtn.setText("Gestionar Empleados");
+        gestionarEmpleadosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarEmpleadosBtnActionPerformed(evt);
+            }
+        });
         jPanel11.add(gestionarEmpleadosBtn);
 
         gestionProveedoresBtn.setText("Gestión de proveedores");
@@ -198,7 +218,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel11);
 
-        jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
+        contenedorAbajo.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
         jPanel8.setLayout(new java.awt.GridLayout(1, 0));
@@ -215,68 +235,68 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jPanel8.add(jPanel9);
 
-        jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
+        contenedorAbajo.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel10.setBackground(new java.awt.Color(153, 153, 153));
         jPanel10.setLayout(new java.awt.GridLayout(2, 2));
 
-        jList4.setBackground(new java.awt.Color(153, 153, 153));
-        jList4.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        listaPromocionesReportes.setBackground(new java.awt.Color(153, 153, 153));
+        listaPromocionesReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        listaPromocionesReportes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PROMOCIONES</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane5.setViewportView(jList4);
+        jScrollPane5.setViewportView(listaPromocionesReportes);
 
         jPanel10.add(jScrollPane5);
 
-        jList5.setBackground(new java.awt.Color(153, 153, 153));
-        jList5.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+        listaStockReportes.setBackground(new java.awt.Color(153, 153, 153));
+        listaStockReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        listaStockReportes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">ALERTAS DE STOCK</font></b></html>", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane6.setViewportView(jList5);
+        jScrollPane6.setViewportView(listaStockReportes);
 
         jPanel10.add(jScrollPane6);
 
-        jList2.setBackground(new java.awt.Color(153, 153, 153));
-        jList2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        listaEmpleadosReportes.setBackground(new java.awt.Color(153, 153, 153));
+        listaEmpleadosReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        listaEmpleadosReportes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">EMPLEADOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList2);
+        jScrollPane3.setViewportView(listaEmpleadosReportes);
 
         jPanel10.add(jScrollPane3);
 
-        jList6.setBackground(new java.awt.Color(153, 153, 153));
-        jList6.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        jList6.setModel(new javax.swing.AbstractListModel<String>() {
+        listaproductosReportes.setBackground(new java.awt.Color(153, 153, 153));
+        listaproductosReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        listaproductosReportes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PRODUCTOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane7.setViewportView(jList6);
+        jScrollPane7.setViewportView(listaproductosReportes);
 
         jPanel10.add(jScrollPane7);
 
-        jPanel6.add(jPanel10, java.awt.BorderLayout.CENTER);
+        contenedorAbajo.add(jPanel10, java.awt.BorderLayout.CENTER);
 
-        jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
+        contenedorPrincipal.add(contenedorAbajo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
         );
 
         pack();
@@ -293,10 +313,32 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         this.dispose(); // Cierra la ventana actual
-        Home nuevaVentana = new Home(); // Crea una nueva instancia
+        HerramientasAdministrador nuevaVentana = new HerramientasAdministrador(); // Crea una nueva instancia
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
+
+    private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOpcionesActionPerformed
+
+    private void accesoVentasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accesoVentasBtnActionPerformed
+        
+    }//GEN-LAST:event_accesoVentasBtnActionPerformed
+
+    private void StockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockBtnActionPerformed
+        this.dispose();
+        GestionarStock stock = new GestionarStock();
+        stock.setVisible(true);
+        stock.setLocationRelativeTo(null);
+    }//GEN-LAST:event_StockBtnActionPerformed
+
+    private void gestionarEmpleadosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarEmpleadosBtnActionPerformed
+        this.dispose();
+        Gestión_empleados stock = new Gestión_empleados();
+        stock.setVisible(true);
+        stock.setLocationRelativeTo(null);
+    }//GEN-LAST:event_gestionarEmpleadosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,6 +371,9 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
+    private javax.swing.JPanel contenedorAbajo;
+    private javax.swing.JPanel contenedorArriba;
+    private javax.swing.JPanel contenedorPrincipal;
     private javax.swing.JLabel dniAdministradorJlb;
     private javax.swing.JButton gestionProveedoresBtn;
     private javax.swing.JButton gestionarEmpleadosBtn;
@@ -336,11 +381,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
-    private javax.swing.JList<String> jList6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -350,9 +391,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -361,6 +399,10 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JList<String> listaEmpleadosReportes;
+    private javax.swing.JList<String> listaPromocionesReportes;
+    private javax.swing.JList<String> listaStockReportes;
+    private javax.swing.JList<String> listaproductosReportes;
     private javax.swing.JLabel nombreAdmJlb;
     private javax.swing.JPanel pnlBorde;
     // End of variables declaration//GEN-END:variables
