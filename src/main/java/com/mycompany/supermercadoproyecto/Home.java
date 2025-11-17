@@ -92,8 +92,8 @@ pnlHome.repaint();
         ;
         jLabel1 = new javax.swing.JLabel();
         btnVentas = new javax.swing.JButton();
-        btnStock = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
+        btnStock = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,19 +155,6 @@ pnlHome.repaint();
         gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 28);
         pnlHome.add(btnVentas, gridBagConstraints);
 
-        btnStock.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        btnStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stock.png"))); // NOI18N
-        btnStock.setText("Gestionar Stock");
-        btnStock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 28);
-        pnlHome.add(btnStock, gridBagConstraints);
-
         btnClientes.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
@@ -185,6 +172,24 @@ pnlHome.repaint();
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 28);
         pnlHome.add(btnClientes, gridBagConstraints);
+
+        btnStock.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        btnStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stock.png"))); // NOI18N
+        btnStock.setText("Gestionar Stock");
+        btnStock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStockActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 19;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 28);
+        pnlHome.add(btnStock, gridBagConstraints);
 
         pnlPrincipal.add(pnlHome, java.awt.BorderLayout.CENTER);
 
@@ -226,6 +231,13 @@ pnlHome.repaint();
     nuevaVentana.setVisible(true); // Muestra la nueva
     nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
+
+    private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
+        this.dispose();
+        GestionarStock stock = new GestionarStock();
+        stock.setVisible(true);
+        stock.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnStockActionPerformed
 
     /**
      * @param args the command line arguments
