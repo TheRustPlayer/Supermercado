@@ -214,9 +214,9 @@ pnlHome.repaint();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-this.dispose();
+     this.dispose();
     Acceso_clientes c = new Acceso_clientes(); 
-   c.setVisible(true); // Muestra la nueva
+    c.setVisible(true); // Muestra la nueva
     c.setLocationRelativeTo(null);   
     }//GEN-LAST:event_btnClientesActionPerformed
 
