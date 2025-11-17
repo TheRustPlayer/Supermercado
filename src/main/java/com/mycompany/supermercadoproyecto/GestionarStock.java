@@ -397,7 +397,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         this.dispose(); // Cierra la ventana actual
-        Home nuevaVentana = new Home(); // Crea una nueva instancia
+        GestionarStock nuevaVentana = new GestionarStock(); // Crea una nueva instancia
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed

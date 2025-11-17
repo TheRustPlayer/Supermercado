@@ -5,6 +5,15 @@
 package com.mycompany.supermercadoproyecto;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -40,9 +49,9 @@ public class Acceso_clientes extends javax.swing.JFrame {
         pnlPantalla = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
         pnlPantalla = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png") ;
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAñadir = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDNI = new javax.swing.JTextField();
@@ -99,9 +108,14 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(40, 118, 0, 0);
         pnlPantalla.add(jLabel2, gridBagConstraints);
 
-        jButton1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jButton1.setText("Añadir");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnAñadir.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        btnAñadir.setText("Añadir");
+        btnAñadir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnAñadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -109,11 +123,16 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.ipady = 47;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(56, 12, 0, 0);
-        pnlPantalla.add(jButton1, gridBagConstraints);
+        pnlPantalla.add(btnAñadir, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jButton2.setText("Modificar");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnModificar.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -121,14 +140,14 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.ipady = 47;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(56, 87, 0, 0);
-        pnlPantalla.add(jButton2, gridBagConstraints);
+        pnlPantalla.add(btnModificar, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jButton3.setText("Eliminar");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -139,7 +158,7 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.ipady = 47;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(56, 64, 0, 97);
-        pnlPantalla.add(jButton3, gridBagConstraints);
+        pnlPantalla.add(btnEliminar, gridBagConstraints);
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         txtNombre.setForeground(java.awt.Color.gray);
@@ -212,24 +231,18 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 60, 0);
         pnlPantalla.add(txtDNI, gridBagConstraints);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (14).png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(64, 39, 0, 0);
         pnlPantalla.add(jLabel1, gridBagConstraints);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (15).png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 39, 0, 0);
         pnlPantalla.add(jLabel3, gridBagConstraints);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (16).png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -273,9 +286,9 @@ public class Acceso_clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOpcionesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        JOptionPane.showMessageDialog(this, "Se ha eliminado el cliente con éxito");
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtApellido(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido
         // TODO add your handling code here:
@@ -332,6 +345,70 @@ public class Acceso_clientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtDNIFocusLost
 
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+      JTextField txtNombre = new JTextField();
+    JTextField txtApellido = new JTextField();
+    JTextField txtDni = new JTextField();
+
+    Dimension d = new Dimension(220, 28);
+    txtNombre.setPreferredSize(d);
+    txtApellido.setPreferredSize(d);
+    txtDni.setPreferredSize(d);
+
+    JPanel panel = new JPanel(new GridBagLayout());
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+    gbc.anchor = GridBagConstraints.WEST;
+
+    // Nombre
+    gbc.gridx = 0; gbc.gridy = 0;
+    panel.add(new JLabel("Nombre:"), gbc);
+    gbc.gridx = 1;
+    panel.add(txtNombre, gbc);
+
+    // Apellido
+    gbc.gridx = 0; gbc.gridy = 1;
+    panel.add(new JLabel("Apellido:"), gbc);
+    gbc.gridx = 1;
+    panel.add(txtApellido, gbc);
+
+    // DNI
+    gbc.gridx = 0; gbc.gridy = 2;
+    panel.add(new JLabel("DNI:"), gbc);
+    gbc.gridx = 1;
+    panel.add(txtDni, gbc);
+
+    int option = JOptionPane.showConfirmDialog(
+            this,
+            panel,
+            "Modificar cliente",
+            JOptionPane.OK_CANCEL_OPTION
+    );
+
+    if (option == JOptionPane.OK_OPTION) {
+
+        if (txtNombre.getText().trim().isEmpty() ||
+            txtApellido.getText().trim().isEmpty() ||
+            txtDni.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this,
+                "Cliente modificado correctamente.",
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    
+
+    }// TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirActionPerformed
+JOptionPane.showMessageDialog(this, "Se ha añadido el cliente con éxito");        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAñadirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,12 +435,12 @@ public class Acceso_clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAñadir;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -76,10 +76,6 @@ public class Login extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         pnlPrincipal = new javax.swing.JPanel();
-        pnlBorde = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
-        btnRecargar = new javax.swing.JButton();
-        btnOpciones = new javax.swing.JButton();
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
         ;
@@ -90,31 +86,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlPrincipal.setLayout(new java.awt.BorderLayout());
-
-        pnlBorde.setBackground(new java.awt.Color(204, 204, 204));
-        pnlBorde.setPreferredSize(new java.awt.Dimension(800, 25));
-        pnlBorde.setLayout(new javax.swing.BoxLayout(pnlBorde, javax.swing.BoxLayout.LINE_AXIS));
-
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-        pnlBorde.add(btnHome);
-
-        btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recargar.png"))); // NOI18N
-        btnRecargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecargarActionPerformed(evt);
-            }
-        });
-        pnlBorde.add(btnRecargar);
-
-        btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
-        pnlBorde.add(btnOpciones);
-
-        pnlPrincipal.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
 
         pnlHome.setLayout(new java.awt.GridBagLayout());
 
@@ -167,45 +138,42 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        Home home = new Home();
-        home.setVisible(true);
-        home.setLocationRelativeTo(null); // Centra la ventana
-
-        // Cierra la ventana actual
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_btnHomeActionPerformed
-
-    private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
-        this.dispose(); // Cierra la ventana actual
-        Home nuevaVentana = new Home(); // Crea una nueva instancia
-        nuevaVentana.setVisible(true); // Muestra la nueva
-        nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
-    }//GEN-LAST:event_btnRecargarActionPerformed
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-String dniCorrecto = "12345678A";
+    String dniCorrecto = "12345678A";
     String passCorrecta = "1234";
 
+    // Obtener datos introducidos
     String dniIntroducido = jTextField1.getText();
-    String passIntroducida = jTextField2.getText();
+    String passIntroducida = jTextField2.getText(); // ← ESTE ES EL CAMBIO IMPORTANTE
 
     if (dniIntroducido.equals(dniCorrecto) && passIntroducida.equals(passCorrecta)) {
+
         JOptionPane.showMessageDialog(this, "Inicio de sesión correcto");
 
-        // ABRIR HOME.JAVA
-        Home ventanaHome = new Home();
-        ventanaHome.setVisible(true);
-        ventanaHome.setLocationRelativeTo(null); // Centrar pantalla
-        this.dispose(); // Cierra el Login
-    } 
-    else {
-        JOptionPane.showMessageDialog(this, "DNI o contraseña incorrectos");
-    } 
+        try {
+            Home ventanaHome = new Home();
+            ventanaHome.setVisible(true);
+            ventanaHome.setLocationRelativeTo(null);
+            this.dispose();
+        } 
+        catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                "Error al abrir Home: " + ex.getMessage(),
+                "ERROR",
+                JOptionPane.ERROR_MESSAGE);
+        }
+
+    } else {
+        JOptionPane.showMessageDialog(this,
+            "DNI o contraseña incorrectos",
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+    }
     
        
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -236,13 +204,9 @@ String dniCorrecto = "12345678A";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnOpciones;
-    private javax.swing.JButton btnRecargar;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables

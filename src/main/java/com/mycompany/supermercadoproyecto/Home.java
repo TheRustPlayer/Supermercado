@@ -23,6 +23,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        configurarBotonSalir();
         setExtendedState(MAXIMIZED_BOTH);
        // Aseguramos layout de pnlHome
 GridBagLayout layout = (GridBagLayout) pnlHome.getLayout();
@@ -71,7 +72,24 @@ pnlHome.repaint();
   
 
     }
+    
+// ===========================
+//    MÉTODO CORRECTO
+// ===========================
+private void configurarBotonSalir() {
 
+    GridBagConstraints gbc = new GridBagConstraints();
+
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.gridwidth = 3;
+    gbc.fill = GridBagConstraints.NONE;
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.insets = new Insets(40, 0, 20, 0);
+    gbc.weighty = 1.0;
+
+    pnlHome.add(salir, gbc);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,6 +112,7 @@ pnlHome.repaint();
         btnVentas = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -191,6 +210,14 @@ pnlHome.repaint();
         gridBagConstraints.insets = new java.awt.Insets(10, 28, 10, 28);
         pnlHome.add(btnStock, gridBagConstraints);
 
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cerrar.png"))); // NOI18N
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        pnlHome.add(salir, new java.awt.GridBagConstraints());
+
         pnlPrincipal.add(pnlHome, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,6 +266,13 @@ pnlHome.repaint();
         stock.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnStockActionPerformed
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+       this.dispose();
+       Login cerrar = new Login ();
+       cerrar.setVisible(true);
+       cerrar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_salirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,6 +296,7 @@ pnlHome.repaint();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Home().setVisible(true));
+        
     }
     
 
@@ -276,6 +311,8 @@ pnlHome.repaint();
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlPrincipal;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
+
 
