@@ -33,6 +33,8 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -61,6 +63,14 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jList5 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jList6 = new javax.swing.JList<>();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -72,6 +82,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,7 +138,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massi-cuadrado-100.jpg"))); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(100, 100));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -185,7 +201,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel8.setLayout(new java.awt.GridLayout());
+        jPanel8.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
@@ -202,17 +218,51 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel6.add(jPanel8, java.awt.BorderLayout.LINE_END);
 
         jPanel10.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel10.setLayout(new java.awt.GridLayout(2, 2));
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 604, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 418, Short.MAX_VALUE)
-        );
+        jList4.setBackground(new java.awt.Color(153, 153, 153));
+        jList4.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PROMOCIONES</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(jList4);
+
+        jPanel10.add(jScrollPane5);
+
+        jList5.setBackground(new java.awt.Color(153, 153, 153));
+        jList5.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">ALERTAS DE STOCK</font></b></html>", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(jList5);
+
+        jPanel10.add(jScrollPane6);
+
+        jList2.setBackground(new java.awt.Color(153, 153, 153));
+        jList2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">EMPLEADOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList2);
+
+        jPanel10.add(jScrollPane3);
+
+        jList6.setBackground(new java.awt.Color(153, 153, 153));
+        jList6.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        jList6.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PRODUCTOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane7.setViewportView(jList6);
+
+        jPanel10.add(jScrollPane7);
 
         jPanel6.add(jPanel10, java.awt.BorderLayout.CENTER);
 
@@ -226,7 +276,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
         );
 
         pack();
@@ -286,6 +336,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jList4;
+    private javax.swing.JList<String> jList5;
+    private javax.swing.JList<String> jList6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -301,6 +356,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel nombreAdmJlb;
     private javax.swing.JPanel pnlBorde;
     // End of variables declaration//GEN-END:variables
