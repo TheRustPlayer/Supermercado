@@ -195,6 +195,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel11.add(accesoVentasBtn);
 
         informesBtn.setText("Informes");
+        informesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informesBtnActionPerformed(evt);
+            }
+        });
         jPanel11.add(informesBtn);
 
         StockBtn.setText("Stock De La Tienda");
@@ -339,6 +344,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         stock.setVisible(true);
         stock.setLocationRelativeTo(null);
     }//GEN-LAST:event_gestionarEmpleadosBtnActionPerformed
+
+    private void informesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesBtnActionPerformed
+       this.dispose(); 
+        Informes nuevaVentana = new Informes();
+        nuevaVentana.setVisible(true); 
+        nuevaVentana.setLocationRelativeTo(null);
+    }//GEN-LAST:event_informesBtnActionPerformed
 
     /**
      * @param args the command line arguments
