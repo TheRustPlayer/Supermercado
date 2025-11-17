@@ -4,6 +4,8 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MEDAC
@@ -17,6 +19,7 @@ public class GestionarStock extends javax.swing.JFrame {
      */
     public GestionarStock() {
         initComponents();
+     
     }
 
     /**
