@@ -18,6 +18,8 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     public HerramientasAdministrador() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        
+        jLabel8.setText(jLabel8.getText().replace("{nif}", "26288441Q").replace("{telefono}", "463634532").replace("{nombre}","Massimo<br>Vasta<br>Triviño"));
     }
 
     /**
@@ -57,9 +59,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         gestionProveedoresBtn = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -189,27 +189,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jLabel3.setText("jLabel3");
-        jLabel3.setPreferredSize(new java.awt.Dimension(85, 16));
+        jLabel8.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        jLabel8.setText("<html>{nombre}<br><br>Infomación<br> del admin <br><br><br> NIF:<br> {nif} <br> <br><br>Teléfono: <br>{telefono} </html>");
+        jLabel8.setPreferredSize(new java.awt.Dimension(100, 400));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
-        jPanel9.add(jLabel3, gridBagConstraints);
-
-        jLabel4.setText("jLabel4");
-        jLabel4.setPreferredSize(new java.awt.Dimension(85, 16));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
-        jPanel9.add(jLabel4, gridBagConstraints);
-
-        jLabel5.setText("jLabel5");
-        jLabel5.setPreferredSize(new java.awt.Dimension(85, 16));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(7, 7, 7, 7);
-        jPanel9.add(jLabel5, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        jPanel9.add(jLabel8, gridBagConstraints);
 
         jPanel8.add(jPanel9);
 
@@ -221,11 +207,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 605, Short.MAX_VALUE)
+            .addGap(0, 604, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGap(0, 418, Short.MAX_VALUE)
         );
 
         jPanel6.add(jPanel10, java.awt.BorderLayout.CENTER);
@@ -299,9 +285,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton informesBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
