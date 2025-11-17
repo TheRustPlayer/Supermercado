@@ -19,8 +19,9 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        setExtendedState(MAXIMIZED_BOTH);
+        
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
         jTextField1.setForeground(Color.GRAY);
     jTextField1.setText("DNI/NIF");
 
@@ -77,9 +78,7 @@ public class Login extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlBorde = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
-        btnOpciones = new javax.swing.JButton();
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
         pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
         ;
@@ -89,19 +88,12 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        pnlPrincipal.setPreferredSize(new java.awt.Dimension(800, 800));
         pnlPrincipal.setLayout(new java.awt.BorderLayout());
 
         pnlBorde.setBackground(new java.awt.Color(204, 204, 204));
         pnlBorde.setPreferredSize(new java.awt.Dimension(800, 25));
         pnlBorde.setLayout(new javax.swing.BoxLayout(pnlBorde, javax.swing.BoxLayout.LINE_AXIS));
-
-        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
-            }
-        });
-        pnlBorde.add(btnHome);
 
         btnRecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recargar.png"))); // NOI18N
         btnRecargar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +102,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlBorde.add(btnRecargar);
-
-        btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
-        pnlBorde.add(btnOpciones);
 
         pnlPrincipal.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
 
@@ -130,6 +119,7 @@ public class Login extends javax.swing.JFrame {
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setText("Contraseña...");
+        jTextField2.setMinimumSize(new java.awt.Dimension(64, 25));
         jTextField2.setPreferredSize(new java.awt.Dimension(150, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -151,34 +141,14 @@ public class Login extends javax.swing.JFrame {
 
         pnlPrincipal.add(pnlHome, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(pnlPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        Home home = new Home();
-        home.setVisible(true);
-        home.setLocationRelativeTo(null); // Centra la ventana
-
-        // Cierra la ventana actual
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_btnHomeActionPerformed
-
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         this.dispose(); // Cierra la ventana actual
-        Home nuevaVentana = new Home(); // Crea una nueva instancia
+        Login nuevaVentana = new Login(); // Crea una nueva instancia
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
@@ -236,8 +206,6 @@ String dniCorrecto = "12345678A";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField jTextField1;
