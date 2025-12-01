@@ -5,17 +5,7 @@
 package com.mycompany.supermercadoproyecto;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -32,7 +22,20 @@ public class GestionarStock extends javax.swing.JFrame {
         initComponents();
       setExtendedState(MAXIMIZED_BOTH);
     }
+ private void cambiarPanel(javax.swing.JPanel nuevoPanel) {
+        // Eliminar todo lo que haya actualmente
+        pnlContenido.removeAll();
 
+        // Agregar el nuevo panel en el centro
+        pnlContenido.add(nuevoPanel);
+
+        // Recalcular el layout (tamaños, posiciones)
+        pnlContenido.revalidate();
+
+        // Redibujar visualmente en la pantalla
+        pnlContenido.repaint();
+    }              
+                              
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,9 +54,11 @@ public class GestionarStock extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nombreAdmJlb = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBusca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Añadirbnt = new javax.swing.JButton();
+        eliminartbn = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         pnlBorde = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
@@ -62,23 +67,14 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel11 = new javax.swing.JPanel();
-        accesoVentasBtn = new javax.swing.JButton();
-        informesBtn = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        StockBtn = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        gestionarEmpleadosBtn = new javax.swing.JButton();
-        gestionProveedoresBtn = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        chuchepriasbtn = new javax.swing.JButton();
+        Snacksbtn = new javax.swing.JButton();
+        Frutasbtn = new javax.swing.JButton();
+        bebidasbtn = new javax.swing.JButton();
+        pescadosbtn = new javax.swing.JButton();
+        alcoholbtn = new javax.swing.JButton();
+        CarnesBtn = new javax.swing.JButton();
+        pnlContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,14 +107,22 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel13.setPreferredSize(new java.awt.Dimension(140, 12));
         jPanel13.setLayout(new java.awt.GridBagLayout());
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jTextField1.setForeground(java.awt.Color.gray);
-        jTextField1.setText("Buscar.................");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField1.setPreferredSize(new java.awt.Dimension(180, 22));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtBusca.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        txtBusca.setForeground(java.awt.Color.gray);
+        txtBusca.setText("Buscar.................");
+        txtBusca.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtBusca.setPreferredSize(new java.awt.Dimension(180, 22));
+        txtBusca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscaFocusLost(evt);
+            }
+        });
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtBuscaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -129,7 +133,7 @@ public class GestionarStock extends javax.swing.JFrame {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(37, 25, 31, 0);
-        jPanel13.add(jTextField1, gridBagConstraints);
+        jPanel13.add(txtBusca, gridBagConstraints);
 
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
@@ -152,6 +156,16 @@ public class GestionarStock extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(37, 6, 31, 37);
         jPanel13.add(jButton2, gridBagConstraints);
+
+        Añadirbnt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (19).png"))); // NOI18N
+        Añadirbnt.setBorderPainted(false);
+        Añadirbnt.setContentAreaFilled(false);
+        jPanel13.add(Añadirbnt, new java.awt.GridBagConstraints());
+
+        eliminartbn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (18).png"))); // NOI18N
+        eliminartbn.setBorderPainted(false);
+        eliminartbn.setContentAreaFilled(false);
+        jPanel13.add(eliminartbn, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -194,11 +208,6 @@ public class GestionarStock extends javax.swing.JFrame {
         pnlBorde.add(btnRecargar);
 
         btnOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/opciones.png"))); // NOI18N
-        btnOpciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpcionesActionPerformed(evt);
-            }
-        });
         pnlBorde.add(btnOpciones);
 
         jPanel7.add(pnlBorde, java.awt.BorderLayout.PAGE_START);
@@ -210,171 +219,92 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel11.setPreferredSize(new java.awt.Dimension(153, 150));
         jPanel11.setLayout(new java.awt.GridLayout(0, 1));
 
-        accesoVentasBtn.setBackground(new java.awt.Color(153, 153, 153));
-        accesoVentasBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        accesoVentasBtn.setText("CHUCHERÍAS");
-        accesoVentasBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        accesoVentasBtn.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel11.add(accesoVentasBtn);
+        chuchepriasbtn.setBackground(new java.awt.Color(153, 153, 153));
+        chuchepriasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        chuchepriasbtn.setText("CHUCHERÍAS");
+        chuchepriasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        chuchepriasbtn.setPreferredSize(new java.awt.Dimension(100, 30));
+        chuchepriasbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chuchepriasbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(chuchepriasbtn);
 
-        informesBtn.setBackground(new java.awt.Color(153, 153, 153));
-        informesBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        informesBtn.setText("SNACKS");
-        informesBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel11.add(informesBtn);
+        Snacksbtn.setBackground(new java.awt.Color(153, 153, 153));
+        Snacksbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        Snacksbtn.setText("SNACKS");
+        Snacksbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Snacksbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SnacksbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(Snacksbtn);
 
-        jButton15.setBackground(new java.awt.Color(153, 153, 153));
-        jButton15.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton15.setText("FRUTAS");
-        jButton15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel11.add(jButton15);
+        Frutasbtn.setBackground(new java.awt.Color(153, 153, 153));
+        Frutasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        Frutasbtn.setText("FRUTAS");
+        Frutasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Frutasbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FrutasbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(Frutasbtn);
 
-        StockBtn.setBackground(new java.awt.Color(153, 153, 153));
-        StockBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        StockBtn.setText("BEBIDAS");
-        StockBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel11.add(StockBtn);
+        bebidasbtn.setBackground(new java.awt.Color(153, 153, 153));
+        bebidasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        bebidasbtn.setText("BEBIDAS");
+        bebidasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        bebidasbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bebidasbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(bebidasbtn);
 
-        jButton16.setBackground(new java.awt.Color(153, 153, 153));
-        jButton16.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton16.setText("PESCADOS");
-        jButton16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel11.add(jButton16);
+        pescadosbtn.setBackground(new java.awt.Color(153, 153, 153));
+        pescadosbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        pescadosbtn.setText("PESCADOS");
+        pescadosbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        pescadosbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pescadosbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(pescadosbtn);
 
-        gestionarEmpleadosBtn.setBackground(new java.awt.Color(153, 153, 153));
-        gestionarEmpleadosBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        gestionarEmpleadosBtn.setText("ALCOHOL");
-        gestionarEmpleadosBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel11.add(gestionarEmpleadosBtn);
+        alcoholbtn.setBackground(new java.awt.Color(153, 153, 153));
+        alcoholbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        alcoholbtn.setText("ALCOHOL");
+        alcoholbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        alcoholbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alcoholbtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(alcoholbtn);
 
-        gestionProveedoresBtn.setBackground(new java.awt.Color(153, 153, 153));
-        gestionProveedoresBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        gestionProveedoresBtn.setText("CARNES");
-        gestionProveedoresBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        gestionProveedoresBtn.setPreferredSize(new java.awt.Dimension(150, 23));
-        jPanel11.add(gestionProveedoresBtn);
+        CarnesBtn.setBackground(new java.awt.Color(153, 153, 153));
+        CarnesBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        CarnesBtn.setText("CARNES");
+        CarnesBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        CarnesBtn.setPreferredSize(new java.awt.Dimension(150, 23));
+        CarnesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CarnesBtnActionPerformed(evt);
+            }
+        });
+        jPanel11.add(CarnesBtn);
 
         jScrollPane1.setViewportView(jPanel11);
 
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(800, 800));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel2.setText("COCACOLA");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cocacola.png"))); // NOI18N
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (1).png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton4.setText("Añadir Oferta");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton5.setText("Quitar Oferta");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addContainerGap(125, Short.MAX_VALUE)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2474, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 292, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 292, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jScrollPane3.setViewportView(jPanel3);
-
-        jPanel6.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        pnlContenido.setPreferredSize(new java.awt.Dimension(800, 800));
+        pnlContenido.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel6.add(pnlContenido, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
 
@@ -382,19 +312,19 @@ public class GestionarStock extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         Home home = new Home();
@@ -407,138 +337,73 @@ public class GestionarStock extends javax.swing.JFrame {
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         this.dispose(); // Cierra la ventana actual
-        GestionarStock nuevaVentana = new GestionarStock(); // Crea una nueva instancia
+        Home nuevaVentana = new Home(); // Crea una nueva instancia
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
-    // ==========================
-    //  ICONO DEL PRODUCTO
-    // ==========================
-    ImageIcon imgProducto = null;
-    try {
-        imgProducto = new ImageIcon(getClass().getResource("/cocacola.png"));
-    } catch (Exception e) {
-        System.out.println("Error cargando imagen: " + e.getMessage());
-    }
+    private void bebidasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidasbtnActionPerformed
+        // TODO add your handling code here:
+         cambiarPanel(new pnlAlcohol());
+        
+        
+    }//GEN-LAST:event_bebidasbtnActionPerformed
 
-    // ==========================
-    //  CAMPOS
-    // ==========================
-    Dimension fieldSize = new Dimension(140, 28);
+    private void chuchepriasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuchepriasbtnActionPerformed
+        // TODO add your handling code here:ç
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_chuchepriasbtnActionPerformed
 
-    JTextField txtMulti1 = new JTextField();
-    txtMulti1.setPreferredSize(new Dimension(50, 28));
+    private void FrutasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrutasbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_FrutasbtnActionPerformed
 
-    JTextField txtMulti2 = new JTextField();
-    txtMulti2.setPreferredSize(new Dimension(50, 28));
+    private void pescadosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pescadosbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_pescadosbtnActionPerformed
 
-    JTextField txtDescuento = new JTextField();
-    txtDescuento.setPreferredSize(fieldSize);
+    private void CarnesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarnesBtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_CarnesBtnActionPerformed
 
+    private void alcoholbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_alcoholbtnActionPerformed
 
-    // ==========================
-    //  PANEL PRINCIPAL
-    // ==========================
-    JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(Color.WHITE);
-    panel.setPreferredSize(new Dimension(550, 270));
+    private void SnacksbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SnacksbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlAlcohol());
+    }//GEN-LAST:event_SnacksbtnActionPerformed
 
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10);
-    gbc.anchor = GridBagConstraints.WEST;
+    private void txtBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusGained
+        // TODO add your handling code here:
+        if (txtBusca.getText().equals("Buscar............................")) {
+            txtBusca.setText("");
+            txtBusca.setForeground(Color.BLACK);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_txtBuscaFocusGained
 
-    // ==========================
-    //  IMAGEN IZQUIERDA
-    // ==========================
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.gridheight = 5;
-    if (imgProducto != null) panel.add(new JLabel(imgProducto), gbc);
-    gbc.gridheight = 1;
-
-    // ==========================
-    //  Multiplicador
-    // ==========================
-    gbc.gridx = 1; gbc.gridy = 0;
-    panel.add(new JLabel("Multiplicador:"), gbc);
-
-    JPanel pMultiplicador = new JPanel();
-    pMultiplicador.setOpaque(false);
-    pMultiplicador.add(txtMulti1);
-    pMultiplicador.add(new JLabel(" x "));
-    pMultiplicador.add(txtMulti2);
-
-    gbc.gridx = 2;
-    gbc.gridwidth = 2;
-    panel.add(pMultiplicador, gbc);
-    gbc.gridwidth = 1;
-
-
-    // ==========================
-    //  Descuento
-    // ==========================
-    gbc.gridx = 1; 
-    gbc.gridy = 1;
-    panel.add(new JLabel("Descuento:"), gbc);
-
-    JPanel pDescuento = new JPanel();
-    pDescuento.setOpaque(false);
-    pDescuento.add(txtDescuento);
-    pDescuento.add(new JLabel("%"));
-
-    gbc.gridx = 2;
-    gbc.gridwidth = 2;
-    panel.add(pDescuento, gbc);
-    gbc.gridwidth = 1;
-
-
-    // ==========================
-    //  MOSTRAR JOPTIONPANE
-    // ==========================
-    int opcion = JOptionPane.showConfirmDialog(
-            this,
-            panel,
-            "Añadir oferta",
-            JOptionPane.OK_CANCEL_OPTION,
-            JOptionPane.PLAIN_MESSAGE
-    );
-
-    if (opcion == JOptionPane.OK_OPTION) {
-        JOptionPane.showMessageDialog(this, "Oferta añadida (simulado)");
-    }
-
-
-
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JOptionPane.showMessageDialog(
-            this,
-            "La oferta se ha quitado correctamente.",
-            "Operación completada",
-            JOptionPane.INFORMATION_MESSAGE
-    );
-
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
-    HerramientasAdministrador herramientas = new HerramientasAdministrador();
-    this.dispose();
-    herramientas.setVisible(true);
-    herramientas.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnOpcionesActionPerformed
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(
-            this,
-            "En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. ",
-            "Operación completada",
-            JOptionPane.INFORMATION_MESSAGE
-    );
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void txtBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusLost
+        // TODO add your handling code here:
+          if (txtBusca.getText().isEmpty()) {
+            txtBusca.setForeground(Color.GRAY);
+            txtBusca.setText("Buscar......................");
+        }
+        
+        
+        
+        
+        
+       
+    }//GEN-LAST:event_txtBuscaFocusLost
 
     /**
      * @param args the command line arguments
@@ -566,41 +431,34 @@ public class GestionarStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton StockBtn;
-    private javax.swing.JButton accesoVentasBtn;
+    private javax.swing.JButton Añadirbnt;
+    private javax.swing.JButton CarnesBtn;
+    private javax.swing.JButton Frutasbtn;
+    private javax.swing.JButton Snacksbtn;
+    private javax.swing.JButton alcoholbtn;
+    private javax.swing.JButton bebidasbtn;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton gestionProveedoresBtn;
-    private javax.swing.JButton gestionarEmpleadosBtn;
-    private javax.swing.JButton informesBtn;
+    private javax.swing.JButton chuchepriasbtn;
+    private javax.swing.JButton eliminartbn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nombreAdmJlb;
+    private javax.swing.JButton pescadosbtn;
     private javax.swing.JPanel pnlBorde;
+    private javax.swing.JPanel pnlContenido;
+    private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }
