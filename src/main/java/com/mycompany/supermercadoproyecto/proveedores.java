@@ -5,24 +5,24 @@
 package com.mycompany.supermercadoproyecto;
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author MEDAC
  */
-public class GestionarStock extends javax.swing.JFrame {
+public class proveedores extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GestionarStock.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(proveedores.class.getName());
 
     /**
-     * Creates new form GestionarStock
+     * Creates new form proveedores
      */
-    public GestionarStock() {
+    public proveedores() {
         initComponents();
-      setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH);
     }
- private void cambiarPanel(javax.swing.JPanel nuevoPanel) {
+    
+        private void cambiarPanel(javax.swing.JPanel nuevoPanel) {
         // Eliminar todo lo que haya actualmente
         pnlContenido.removeAll();
 
@@ -34,8 +34,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         // Redibujar visualmente en la pantalla
         pnlContenido.repaint();
-    }              
-                              
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -221,7 +220,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         chuchepriasbtn.setBackground(new java.awt.Color(153, 153, 153));
         chuchepriasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        chuchepriasbtn.setText("CHUCHERÍAS");
+        chuchepriasbtn.setText("FAMADESA");
         chuchepriasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         chuchepriasbtn.setPreferredSize(new java.awt.Dimension(100, 30));
         chuchepriasbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +232,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         Snacksbtn.setBackground(new java.awt.Color(153, 153, 153));
         Snacksbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        Snacksbtn.setText("SNACKS");
+        Snacksbtn.setText("ALCODIS");
         Snacksbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Snacksbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +243,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         Frutasbtn.setBackground(new java.awt.Color(153, 153, 153));
         Frutasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        Frutasbtn.setText("FRUTAS");
+        Frutasbtn.setText("GONVADOR");
         Frutasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Frutasbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +254,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         bebidasbtn.setBackground(new java.awt.Color(153, 153, 153));
         bebidasbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        bebidasbtn.setText("BEBIDAS");
+        bebidasbtn.setText("ASSOLIN");
         bebidasbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         bebidasbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +265,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         pescadosbtn.setBackground(new java.awt.Color(153, 153, 153));
         pescadosbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        pescadosbtn.setText("PESCADOS");
+        pescadosbtn.setText("PESCAPRO");
         pescadosbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         pescadosbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +276,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         alcoholbtn.setBackground(new java.awt.Color(153, 153, 153));
         alcoholbtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        alcoholbtn.setText("ALCOHOL");
+        alcoholbtn.setText("PANIREST");
         alcoholbtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         alcoholbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +287,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
         CarnesBtn.setBackground(new java.awt.Color(153, 153, 153));
         CarnesBtn.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        CarnesBtn.setText("CARNES");
+        CarnesBtn.setText("PLASTICSUR");
         CarnesBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         CarnesBtn.setPreferredSize(new java.awt.Dimension(150, 23));
         CarnesBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +302,7 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
         pnlContenido.setPreferredSize(new java.awt.Dimension(800, 800));
-        pnlContenido.setLayout(new java.awt.GridLayout(1, 0));
+        pnlContenido.setLayout(new java.awt.GridLayout());
         jPanel6.add(pnlContenido, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -312,21 +311,37 @@ public class GestionarStock extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-  
+
+    private void txtBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusGained
+        // TODO add your handling code here:
+        if (txtBusca.getText().equals("Buscar............................")) {
+            txtBusca.setText("");
+            txtBusca.setForeground(Color.BLACK);
+        }
+
+    }//GEN-LAST:event_txtBuscaFocusGained
+
+    private void txtBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusLost
+        // TODO add your handling code here:
+        if (txtBusca.getText().isEmpty()) {
+            txtBusca.setForeground(Color.GRAY);
+            txtBusca.setText("Buscar......................");
+        }
+
+    }//GEN-LAST:event_txtBuscaFocusLost
+
     private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
-   
-       
-    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         Home home = new Home();
@@ -344,68 +359,41 @@ public class GestionarStock extends javax.swing.JFrame {
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
 
-    private void bebidasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidasbtnActionPerformed
-        // TODO add your handling code here:
-         cambiarPanel(new pnlAlcohol());
-        
-        
-    }//GEN-LAST:event_bebidasbtnActionPerformed
-
     private void chuchepriasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chuchepriasbtnActionPerformed
         // TODO add your handling code here:ç
-        cambiarPanel(new pnlAlcohol());
+        cambiarPanel(new pnlProveedor());
     }//GEN-LAST:event_chuchepriasbtnActionPerformed
-
-    private void FrutasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrutasbtnActionPerformed
-        // TODO add your handling code here:
-        cambiarPanel(new pnlAlcohol());
-    }//GEN-LAST:event_FrutasbtnActionPerformed
-
-    private void pescadosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pescadosbtnActionPerformed
-        // TODO add your handling code here:
-        cambiarPanel(new pnlAlcohol());
-    }//GEN-LAST:event_pescadosbtnActionPerformed
-
-    private void CarnesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarnesBtnActionPerformed
-        // TODO add your handling code here:
-        cambiarPanel(new pnlAlcohol());
-    }//GEN-LAST:event_CarnesBtnActionPerformed
-
-    private void alcoholbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholbtnActionPerformed
-        // TODO add your handling code here:
-        cambiarPanel(new pnlAlcohol());
-    }//GEN-LAST:event_alcoholbtnActionPerformed
 
     private void SnacksbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SnacksbtnActionPerformed
         // TODO add your handling code here:
-        cambiarPanel(new pnlAlcohol());
+        cambiarPanel(new pnlProveedor());
     }//GEN-LAST:event_SnacksbtnActionPerformed
 
-    private void txtBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusGained
+    private void FrutasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrutasbtnActionPerformed
         // TODO add your handling code here:
-        if (txtBusca.getText().equals("Buscar............................")) {
-            txtBusca.setText("");
-            txtBusca.setForeground(Color.BLACK);
-        }
-        
-        
-        
-        
-    }//GEN-LAST:event_txtBuscaFocusGained
+        cambiarPanel(new pnlProveedor());
+    }//GEN-LAST:event_FrutasbtnActionPerformed
 
-    private void txtBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscaFocusLost
+    private void bebidasbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidasbtnActionPerformed
         // TODO add your handling code here:
-          if (txtBusca.getText().isEmpty()) {
-            txtBusca.setForeground(Color.GRAY);
-            txtBusca.setText("Buscar......................");
-        }
-        
-        
-        
-        
-        
-       
-    }//GEN-LAST:event_txtBuscaFocusLost
+        cambiarPanel(new pnlProveedor());
+
+    }//GEN-LAST:event_bebidasbtnActionPerformed
+
+    private void pescadosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pescadosbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlProveedor());
+    }//GEN-LAST:event_pescadosbtnActionPerformed
+
+    private void alcoholbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholbtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlProveedor());
+    }//GEN-LAST:event_alcoholbtnActionPerformed
+
+    private void CarnesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarnesBtnActionPerformed
+        // TODO add your handling code here:
+        cambiarPanel(new pnlProveedor());
+    }//GEN-LAST:event_CarnesBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,7 +417,7 @@ public class GestionarStock extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new GestionarStock().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new proveedores().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -219,6 +219,11 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         jPanel11.add(gestionarEmpleadosBtn);
 
         gestionProveedoresBtn.setText("Gestión de proveedores");
+        gestionProveedoresBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionProveedoresBtnActionPerformed(evt);
+            }
+        });
         jPanel11.add(gestionProveedoresBtn);
 
         jScrollPane1.setViewportView(jPanel11);
@@ -351,6 +356,13 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         nuevaVentana.setVisible(true); 
         nuevaVentana.setLocationRelativeTo(null);
     }//GEN-LAST:event_informesBtnActionPerformed
+
+    private void gestionProveedoresBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionProveedoresBtnActionPerformed
+        this.dispose(); 
+        proveedores nuevaVentana = new proveedores();
+        nuevaVentana.setVisible(true); 
+        
+    }//GEN-LAST:event_gestionProveedoresBtnActionPerformed
 
     /**
      * @param args the command line arguments

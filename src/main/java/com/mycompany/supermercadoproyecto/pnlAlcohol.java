@@ -4,7 +4,9 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -408,7 +410,7 @@ public class pnlAlcohol extends javax.swing.JPanel {
 
         JOptionPane.showMessageDialog(
             this,
-            "En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. ",
+            "<html>En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la <br> vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, <br>la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global.</html> ",
             "Operación completada",
             JOptionPane.INFORMATION_MESSAGE
         );
@@ -420,10 +422,12 @@ public class pnlAlcohol extends javax.swing.JPanel {
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
         // TODO add your handling code here:
+       
+
 
         JOptionPane.showMessageDialog(
             this,
-            "En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. ",
+            "<html><body><p style='width: 400px;'>"+"En 1915, la Root Glass Company aceptó el desafío y diseñó una botella inspirada en la vaina del cacao, con curvas distintivas y el logotipo en relieve. Apenas un año después, en 1916, la botella Contour entraba en producción y comenzaba su camino para convertirse en un icono global. "+"</p></body></html>",
             "Operación completada",
             JOptionPane.INFORMATION_MESSAGE
         );
