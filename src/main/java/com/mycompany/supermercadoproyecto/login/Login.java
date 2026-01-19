@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.login;
 
+import com.mycompany.supermercadoproyecto.login.Home;
+import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
+import com.supermercado.dao.EmpleadoDAO;
+import com.supermercado.modelos.Empleado;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -76,8 +80,8 @@ public class Login extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         pnlPrincipal = new javax.swing.JPanel();
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png");
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png")
         ;
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -134,62 +138,54 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String dniUsuario= "12345678A";
-    String passUsuario = "1234";
-    String dniAdmin= "123456789A";
-    String passAdmin = "12345";
+// 1. Obtener datos (Usamos nombres claros)
+    String dni = jTextField1.getText();
+    String pass = jTextField2.getText();
 
-    // Obtener datos introducidos
-    String dniIntroducido = jTextField1.getText();
-    String passIntroducida = jTextField2.getText(); // ← ESTE ES EL CAMBIO IMPORTANTE
+    // 2. Comprobar vacíos
+    if(dni.isEmpty() || pass.isEmpty() || dni.equals("DNI/NIF...") || pass.equals("Contraseña...")) {
+        JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.");
+        return;
+    }
 
-    if (dniIntroducido.equals(dniUsuario) && passIntroducida.equals(passUsuario)) {
+    // 3. Llamar al DAO
+    com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
+    // ¡OJO AQUÍ! Pasamos 'dni' y 'pass', que son las variables que creamos arriba
+    com.supermercado.modelos.Empleado empleado = dao.validarLogin(dni, pass);
 
-        JOptionPane.showMessageDialog(this, "Inicio de sesión correcto");
+    // 4. Evaluar resultado
+    if (empleado != null) {
+        JOptionPane.showMessageDialog(this, "Bienvenido, " + empleado.getNombre());
 
         try {
-            Home ventanaHome = new Home();
-            ventanaHome.setVisible(true);
-            ventanaHome.setLocationRelativeTo(null);
+            // Lógica corregida: Cada ventana se abre y centra en su propio bloque
+            if (empleado.getRol().name().equals("admin") || empleado.getRol().name().equals("gerente")) {
+                // --- ADMIN ---
+                com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador ventanaAdmin = 
+                    new com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador();
+                ventanaAdmin.setVisible(true);
+                ventanaAdmin.setLocationRelativeTo(null); // Centramos AQUÍ
+            } else {
+                // --- HOME NORMAL ---
+                com.mycompany.supermercadoproyecto.login.Home ventanaHome = 
+                    new com.mycompany.supermercadoproyecto.login.Home();
+                ventanaHome.setVisible(true);
+                ventanaHome.setLocationRelativeTo(null); // Centramos AQUÍ
+            }
+            
+            // Cerramos el login solo si todo salió bien
             this.dispose();
-        } 
-        catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this,
-                "Error al abrir Home: " + ex.getMessage(),
-                "ERROR",
-                JOptionPane.ERROR_MESSAGE);
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al abrir ventana: " + ex.getMessage());
         }
 
-    }
-    else if(dniIntroducido.equals(dniAdmin) && passIntroducida.equals(passAdmin)){
-        JOptionPane.showMessageDialog(this, "Inicio de sesión correcto");
-
-        try {
-            HerramientasAdministrador ventanaAdmin = new HerramientasAdministrador();
-            ventanaAdmin.setVisible(true);
-            ventanaAdmin.setLocationRelativeTo(null);
-            this.dispose();
-        } 
-        catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this,
-                "Error al abrir Home: " + ex.getMessage(),
-                "ERROR",
-                JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    
-    
-    else {
-        JOptionPane.showMessageDialog(this,
-            "DNI o contraseña incorrectos",
-            "Error",
+    } else {
+        JOptionPane.showMessageDialog(this, 
+            "Usuario o contraseña incorrectos", 
+            "Error", 
             JOptionPane.ERROR_MESSAGE);
     }
-    
-       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

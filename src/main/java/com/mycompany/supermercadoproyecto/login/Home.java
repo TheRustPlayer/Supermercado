@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.login;
 
+import com.mycompany.supermercadoproyecto.Acceso_clientes;
+import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
+import com.mycompany.supermercadoproyecto.escaparate.GestionarStock;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -105,8 +108,8 @@ private void configurarBotonSalir() {
         btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
         btnOpciones = new javax.swing.JButton();
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png");
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png")
         ;
         jLabel1 = new javax.swing.JLabel();
         btnVentas = new javax.swing.JButton();

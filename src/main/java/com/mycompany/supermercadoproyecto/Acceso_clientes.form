@@ -88,8 +88,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="pnlPantalla">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.mycompany.supermercadoproyecto.BackgroundPanel(&quot;/fondo.png&quot;) "/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="pnlPantalla = new com.mycompany.supermercadoproyecto.BackgroundPanel(&quot;/fondo.png&quot;); "/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel(&quot;/fondo.png&quot;) "/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="pnlPantalla = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel(&quot;/fondo.png&quot;); "/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

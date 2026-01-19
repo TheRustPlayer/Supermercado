@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.administrador;
+
+import com.mycompany.supermercadoproyecto.login.Home;
+import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
 
 /**
  *
  * @author MEDAC
  */
-public class HerramientasAdministrador extends javax.swing.JFrame {
+public class Informes extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HerramientasAdministrador.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Informes.class.getName());
 
     /**
-     * Creates new form HerramientasAdministrador
+     * Creates new form Informes
      */
-    public HerramientasAdministrador() {
+    public Informes() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        
-        jLabel8.setText(jLabel8.getText().replace("{nif}", "26288441Q").replace("{telefono}", "463634532").replace("{nombre}","Massimo<br>Vasta<br>Triviño"));
     }
 
     /**
@@ -32,9 +33,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
         contenedorPrincipal = new javax.swing.JPanel();
         contenedorArriba = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -52,13 +50,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         btnRecargar = new javax.swing.JButton();
         btnOpciones = new javax.swing.JButton();
         contenedorAbajo = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel11 = new javax.swing.JPanel();
-        accesoVentasBtn = new javax.swing.JButton();
-        informesBtn = new javax.swing.JButton();
-        StockBtn = new javax.swing.JButton();
-        gestionarEmpleadosBtn = new javax.swing.JButton();
-        gestionProveedoresBtn = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -71,24 +62,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         listaEmpleadosReportes = new javax.swing.JList<>();
         jScrollPane7 = new javax.swing.JScrollPane();
         listaproductosReportes = new javax.swing.JList<>();
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,7 +98,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Herramientas de Administrador");
+        jLabel1.setText("INFORMES Y FACTURACIÓN");
         jPanel13.add(jLabel1, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -183,53 +156,6 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
         contenedorAbajo.setLayout(new java.awt.BorderLayout());
 
-        jPanel11.setLayout(new java.awt.GridLayout(0, 1));
-
-        accesoVentasBtn.setText("Acceso a ventas");
-        accesoVentasBtn.setPreferredSize(new java.awt.Dimension(100, 30));
-        accesoVentasBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accesoVentasBtnActionPerformed(evt);
-            }
-        });
-        jPanel11.add(accesoVentasBtn);
-
-        informesBtn.setText("Informes");
-        informesBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                informesBtnActionPerformed(evt);
-            }
-        });
-        jPanel11.add(informesBtn);
-
-        StockBtn.setText("Stock De La Tienda");
-        StockBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StockBtnActionPerformed(evt);
-            }
-        });
-        jPanel11.add(StockBtn);
-
-        gestionarEmpleadosBtn.setText("Gestionar Empleados");
-        gestionarEmpleadosBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionarEmpleadosBtnActionPerformed(evt);
-            }
-        });
-        jPanel11.add(gestionarEmpleadosBtn);
-
-        gestionProveedoresBtn.setText("Gestión de proveedores");
-        gestionProveedoresBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionProveedoresBtnActionPerformed(evt);
-            }
-        });
-        jPanel11.add(gestionProveedoresBtn);
-
-        jScrollPane1.setViewportView(jPanel11);
-
-        contenedorAbajo.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
-
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
         jPanel8.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -253,7 +179,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         listaPromocionesReportes.setBackground(new java.awt.Color(153, 153, 153));
         listaPromocionesReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
         listaPromocionesReportes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PROMOCIONES</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">VENTAS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -264,7 +190,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         listaStockReportes.setBackground(new java.awt.Color(153, 153, 153));
         listaStockReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
         listaStockReportes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">ALERTAS DE STOCK</font></b></html>", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">CAJA</font></b></html>", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -275,7 +201,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         listaEmpleadosReportes.setBackground(new java.awt.Color(153, 153, 153));
         listaEmpleadosReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
         listaEmpleadosReportes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">EMPLEADOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PEDIDOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -286,7 +212,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         listaproductosReportes.setBackground(new java.awt.Color(153, 153, 153));
         listaproductosReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
         listaproductosReportes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">PRODUCTOS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">REGISTRO DIARIO</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -306,7 +232,7 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
         );
 
         pack();
@@ -323,46 +249,17 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
         this.dispose(); // Cierra la ventana actual
-        HerramientasAdministrador nuevaVentana = new HerramientasAdministrador(); // Crea una nueva instancia
+        Informes nuevaVentana = new Informes(); // Crea una nueva instancia
         nuevaVentana.setVisible(true); // Muestra la nueva
         nuevaVentana.setLocationRelativeTo(null); // La centra en pantalla
     }//GEN-LAST:event_btnRecargarActionPerformed
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
-        // TODO add your handling code here:
+        HerramientasAdministrador herramientas = new HerramientasAdministrador();
+    this.dispose();
+    herramientas.setVisible(true);
+    herramientas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnOpcionesActionPerformed
-
-    private void accesoVentasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accesoVentasBtnActionPerformed
-        
-    }//GEN-LAST:event_accesoVentasBtnActionPerformed
-
-    private void StockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StockBtnActionPerformed
-        this.dispose();
-        GestionarStock stock = new GestionarStock();
-        stock.setVisible(true);
-        stock.setLocationRelativeTo(null);
-    }//GEN-LAST:event_StockBtnActionPerformed
-
-    private void gestionarEmpleadosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarEmpleadosBtnActionPerformed
-        this.dispose();
-        Gestión_empleados stock = new Gestión_empleados();
-        stock.setVisible(true);
-        stock.setLocationRelativeTo(null);
-    }//GEN-LAST:event_gestionarEmpleadosBtnActionPerformed
-
-    private void informesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesBtnActionPerformed
-       this.dispose(); 
-        Informes nuevaVentana = new Informes();
-        nuevaVentana.setVisible(true); 
-        nuevaVentana.setLocationRelativeTo(null);
-    }//GEN-LAST:event_informesBtnActionPerformed
-
-    private void gestionProveedoresBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionProveedoresBtnActionPerformed
-        this.dispose(); 
-        proveedores nuevaVentana = new proveedores();
-        nuevaVentana.setVisible(true); 
-        
-    }//GEN-LAST:event_gestionProveedoresBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,12 +283,10 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new HerramientasAdministrador().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Informes().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton StockBtn;
-    private javax.swing.JButton accesoVentasBtn;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
@@ -399,27 +294,19 @@ public class HerramientasAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel contenedorArriba;
     private javax.swing.JPanel contenedorPrincipal;
     private javax.swing.JLabel dniAdministradorJlb;
-    private javax.swing.JButton gestionProveedoresBtn;
-    private javax.swing.JButton gestionarEmpleadosBtn;
-    private javax.swing.JButton informesBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;

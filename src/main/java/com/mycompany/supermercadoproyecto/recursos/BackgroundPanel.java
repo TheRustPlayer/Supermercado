@@ -1,4 +1,4 @@
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.recursos;
 
 import java.awt.Graphics;
 import java.awt.Image;

@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.proveedores;
 
+import com.mycompany.supermercadoproyecto.login.Home;
 import java.awt.Color;
 
 /**
@@ -302,7 +303,7 @@ public class proveedores extends javax.swing.JFrame {
         jPanel6.add(jScrollPane1, java.awt.BorderLayout.LINE_START);
 
         pnlContenido.setPreferredSize(new java.awt.Dimension(800, 800));
-        pnlContenido.setLayout(new java.awt.GridLayout());
+        pnlContenido.setLayout(new java.awt.GridLayout(1, 0));
         jPanel6.add(pnlContenido, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.CENTER);

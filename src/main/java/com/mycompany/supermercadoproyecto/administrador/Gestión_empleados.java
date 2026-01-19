@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.supermercadoproyecto;
+package com.mycompany.supermercadoproyecto.administrador;
 
+import com.mycompany.supermercadoproyecto.login.Home;
+import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -95,8 +97,8 @@ pnlHome.repaint();
         btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
         btnOpciones = new javax.swing.JButton();
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
-        pnlHome = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png")
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png");
+        pnlHome = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png")
         ;
         jblEmpleados = new javax.swing.JLabel();
         btnAlta = new javax.swing.JButton();

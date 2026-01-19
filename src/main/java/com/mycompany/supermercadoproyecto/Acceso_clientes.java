@@ -4,6 +4,8 @@
  */
 package com.mycompany.supermercadoproyecto;
 
+import com.mycompany.supermercadoproyecto.login.Home;
+import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -46,8 +48,8 @@ public class Acceso_clientes extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         btnRecargar = new javax.swing.JButton();
         btnOpciones = new javax.swing.JButton();
-        pnlPantalla = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png");
-        pnlPantalla = new com.mycompany.supermercadoproyecto.BackgroundPanel("/fondo.png") ;
+        pnlPantalla = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png");
+        pnlPantalla = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png") ;
         jLabel2 = new javax.swing.JLabel();
         btnAñadir = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
