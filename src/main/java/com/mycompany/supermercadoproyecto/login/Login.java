@@ -138,54 +138,68 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// 1. Obtener datos (Usamos nombres claros)
-    String dni = jTextField1.getText();
-    String pass = jTextField2.getText();
+/// 1. Obtener datos
+String dni = jTextField1.getText();
+        String pass = jTextField2.getText();
 
-    // 2. Comprobar vacíos
-    if(dni.isEmpty() || pass.isEmpty() || dni.equals("DNI/NIF...") || pass.equals("Contraseña...")) {
-        JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.");
-        return;
-    }
-
-    // 3. Llamar al DAO
-    com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
-    // ¡OJO AQUÍ! Pasamos 'dni' y 'pass', que son las variables que creamos arriba
-    com.supermercado.modelos.Empleado empleado = dao.validarLogin(dni, pass);
-
-    // 4. Evaluar resultado
-    if (empleado != null) {
-        JOptionPane.showMessageDialog(this, "Bienvenido, " + empleado.getNombre());
-
-        try {
-            // Lógica corregida: Cada ventana se abre y centra en su propio bloque
-            if (empleado.getRol().name().equals("admin") || empleado.getRol().name().equals("gerente")) {
-                // --- ADMIN ---
-                com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador ventanaAdmin = 
-                    new com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador();
-                ventanaAdmin.setVisible(true);
-                ventanaAdmin.setLocationRelativeTo(null); // Centramos AQUÍ
-            } else {
-                // --- HOME NORMAL ---
-                com.mycompany.supermercadoproyecto.login.Home ventanaHome = 
-                    new com.mycompany.supermercadoproyecto.login.Home();
-                ventanaHome.setVisible(true);
-                ventanaHome.setLocationRelativeTo(null); // Centramos AQUÍ
-            }
-            
-            // Cerramos el login solo si todo salió bien
-            this.dispose();
-            
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error al abrir ventana: " + ex.getMessage());
+// 2. Comprobar vacíos
+        if (dni.isEmpty() || pass.isEmpty() || dni.equals("DNI/NIF...") || pass.equals("Contraseña...")) {
+            JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.");
+            return;
         }
 
-    } else {
-        JOptionPane.showMessageDialog(this, 
-            "Usuario o contraseña incorrectos", 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-    }
+// 3. Llamar al DAO
+        com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
+        com.supermercado.modelos.Empleado empleado = dao.validarLogin(dni, pass);
+
+// 4. Evaluar resultado
+        if (empleado != null) {
+
+            // =========================================================================
+            // 1. GUARDAR EN SESIÓN GLOBAL (Para saber quién es más tarde)
+            // =========================================================================
+            com.supermercado.util.Sesion.setEmpleado(empleado); // <--- NUEVO
+
+            // =========================================================================
+            // 2. REGISTRAR EN LA BASE DE DATOS (Para el historial/informe)
+            // =========================================================================
+            try {
+                com.supermercado.dao.LogDAO logDao = new com.supermercado.dao.LogDAO();
+                logDao.registrarLog(empleado, "Inicio de sesión"); // <--- NUEVO
+            } catch (Exception ex) {
+                System.err.println("No se pudo guardar el log: " + ex.getMessage());
+            }
+            // =========================================================================
+
+            JOptionPane.showMessageDialog(this, "Bienvenido, " + empleado.getNombre());
+
+            try {
+                if (empleado.getRol().name().equals("admin") || empleado.getRol().name().equals("gerente")) {
+                    // --- ADMIN ---
+                    com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador ventanaAdmin
+                            = new com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador();
+                    ventanaAdmin.setVisible(true);
+                    ventanaAdmin.setLocationRelativeTo(null);
+                } else {
+                    // --- HOME NORMAL ---
+                    com.mycompany.supermercadoproyecto.login.Home ventanaHome
+                            = new com.mycompany.supermercadoproyecto.login.Home();
+                    ventanaHome.setVisible(true);
+                    ventanaHome.setLocationRelativeTo(null);
+                }
+
+                this.dispose();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error al abrir ventana: " + ex.getMessage());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Usuario o contraseña incorrectos",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -21,5 +21,6 @@
         <mapping class="com.supermercado.modelos.Ticket"/>
         <mapping class="com.supermercado.modelos.DetalleTicket"/>
         <mapping class="com.supermercado.modelos.MovimientoCaja"/>
+        <mapping class="com.supermercado.modelos.Log"/>
     </session-factory>
 </hibernate-configuration>

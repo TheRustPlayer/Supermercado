@@ -4,6 +4,11 @@
  */
 package com.mycompany.supermercadoproyecto.administrador;
 
+import com.supermercado.dao.LogDAO;
+import com.supermercado.modelos.Log;
+import com.supermercado.util.Sesion;
+import javax.swing.DefaultListModel;
+import java.time.format.DateTimeFormatter;
 import com.mycompany.supermercadoproyecto.login.Home;
 import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador;
 
@@ -21,6 +26,9 @@ public class Informes extends javax.swing.JFrame {
     public Informes() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+
+        // --- AÑADE ESTO ---
+        cargarDatos();
     }
 
     /**
@@ -179,7 +187,7 @@ public class Informes extends javax.swing.JFrame {
         listaPromocionesReportes.setBackground(new java.awt.Color(153, 153, 153));
         listaPromocionesReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 1, new java.awt.Color(51, 51, 51)));
         listaPromocionesReportes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">VENTAS</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "<html><p><b><font color=\"red\" size=\"5\">MODIFICACIÓN</font></b></html>", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -317,4 +325,70 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JLabel nombreAdmJlb;
     private javax.swing.JPanel pnlBorde;
     // End of variables declaration//GEN-END:variables
+// --- MÉTODO PARA CARGAR DATOS DE LA BASE DE DATOS ---
+    private void cargarDatos() {
+        // A. Cargar datos del Administrador actual (Panel Izquierdo Arriba)
+        if (Sesion.getEmpleado() != null) {
+            nombreAdmJlb.setText(Sesion.getEmpleado().getNombre().toUpperCase());
+            dniAdministradorJlb.setText(Sesion.getEmpleado().getDni());
+
+            // Actualizar el panel lateral derecho con info detallada
+            String infoHtml = "<html>" + Sesion.getEmpleado().getNombre() + "<br><br>"
+                    + "Información<br> del admin <br><br><br>"
+                    + "NIF:<br> " + Sesion.getEmpleado().getDni() + " <br> <br><br>"
+                    + "Teléfono: <br>" + "No disponible" + " </html>"; // Si añades teléfono a Empleado, ponlo aquí
+            jLabel8.setText(infoHtml);
+        }
+
+        // B. Preparar herramientas para leer Logs
+        LogDAO dao = new LogDAO();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm dd/MM");
+
+        // --- 1. LLENAR LISTA DE MODIFICACIONES ---
+        // (Tu variable se llama listaPromocionesReportes según el código que pasaste)
+        DefaultListModel<String> modeloMod = new DefaultListModel<>();
+
+        // Mantenemos el título rojo HTML que tenías
+        modeloMod.addElement("<html><p><b><font color=\"red\" size=\"5\">MODIFICACIÓN</font></b></html>");
+
+        java.util.List<Log> logsMod = dao.obtenerLogsModificaciones();
+
+        if (logsMod.isEmpty()) {
+            modeloMod.addElement("Sin modificaciones recientes.");
+        } else {
+            for (Log log : logsMod) {
+                // Formato: "Juan: Modificó precio... (10:30 12/05)"
+                String autor = (log.getEmpleado() != null) ? log.getEmpleado().getNombre() : "Sistema";
+                String linea = "<html><b>" + autor + ":</b> " + log.getAccion()
+                        + " <font color='gray'>(" + log.getFecha().format(formato) + ")</font></html>";
+                modeloMod.addElement(linea);
+            }
+        }
+        listaPromocionesReportes.setModel(modeloMod);
+
+        // --- 2. LLENAR LISTA DE REGISTRO DIARIO ---
+        // (Tu variable se llama listaproductosReportes según el código que pasaste)
+        DefaultListModel<String> modeloDiario = new DefaultListModel<>();
+
+        // Mantenemos el título rojo HTML
+        modeloDiario.addElement("<html><p><b><font color=\"red\" size=\"5\">REGISTRO DIARIO</font></b></html>");
+
+        java.util.List<Log> logsLogin = dao.obtenerLogsLogin();
+
+        if (logsLogin.isEmpty()) {
+            modeloDiario.addElement("Sin registros de hoy.");
+        } else {
+            for (Log log : logsLogin) {
+                if (log.getEmpleado() != null) {
+                    // Formato solicitado: "Mario con dni... inicio sesión a las..."
+                    String fechaStr = log.getFecha().format(formato);
+                    String texto = "<html>" + log.getEmpleado().getNombre()
+                            + " (DNI " + log.getEmpleado().getDni() + ")<br>"
+                            + " inició sesión a las " + fechaStr + "</html>";
+                    modeloDiario.addElement(texto);
+                }
+            }
+        }
+        listaproductosReportes.setModel(modeloDiario);
+    }
 }

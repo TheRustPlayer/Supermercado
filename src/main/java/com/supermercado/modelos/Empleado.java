@@ -36,6 +36,11 @@ public class Empleado {
     public void setPassword(String password) { this.password = password; }
     public Rol getRol() { return rol; }
 
+    @Override
+    public String toString() {
+        // Esto es lo que se verá en el desplegable
+        return dni + " - " + nombre + " " + (apellido != null ? apellido : "");
+    }
     public String getNombre() {
         return nombre;
     }

@@ -9,16 +9,23 @@ import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrado
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /**
  *
@@ -232,113 +239,140 @@ pnlHome.repaint();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-                                       
-    // Crear iconos
-    ImageIcon iconDni = new ImageIcon(getClass().getResource("/dni.png"));
-    ImageIcon iconPass = new ImageIcon(getClass().getResource("/contraseña.png"));
-    ImageIcon iconCheck = new ImageIcon(getClass().getResource("/check.png"));
+        // --- 1. CONFIGURACIÓN VISUAL ---
+        Color fondo = new Color(255, 255, 255);
+        Color grisTexto = new Color(100, 100, 100);
+        Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 18);
+        Font fuenteLabel = new Font("Segoe UI", Font.PLAIN, 13);
 
-    // Crear campos de texto
-    JTextField txtDni = new JTextField();
-    JPasswordField txtPass1 = new JPasswordField();
-    JPasswordField txtPass2 = new JPasswordField();
+// --- 2. CREACIÓN DE COMPONENTES ---
+        JTextField txtNombre = new JTextField();
+        JTextField txtApellido = new JTextField();
+        JTextField txtDni = new JTextField();
+        JTextField txtUsuario = new JTextField();
+        JPasswordField txtPass = new JPasswordField();
+// El ComboBox toma los valores de tu Enum Rol
+        JComboBox<com.supermercado.modelos.Rol> cmbRol = new JComboBox<>(com.supermercado.modelos.Rol.values());
 
-    // Ajustar tamaño de los campos (más largos)
-    Dimension fieldSize = new Dimension(240, 28);
-    txtDni.setPreferredSize(fieldSize);
-    txtPass1.setPreferredSize(fieldSize);
-    txtPass2.setPreferredSize(fieldSize);
-
-    // Panel principal con GridBagLayout
-    JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(new Color(245, 245, 245)); // gris suave
-    panel.setPreferredSize(new Dimension(450, 200)); // ancho y alto más amplios
-
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10);
-    gbc.anchor = GridBagConstraints.WEST;
-
-    // ===== Fila 1: DNI =====
-    gbc.gridx = 0; gbc.gridy = 0;
-    panel.add(new JLabel(iconDni), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("DNI:"), gbc);
-    gbc.gridx = 2;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.weightx = 1.0;
-    panel.add(txtDni, gbc);
-
-    // ===== Fila 2: Contraseña =====
-    gbc.gridx = 0; gbc.gridy = 1;
-    gbc.fill = GridBagConstraints.NONE;
-    gbc.weightx = 0;
-    panel.add(new JLabel(iconPass), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("Establecer contraseña:"), gbc);
-    gbc.gridx = 2;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.weightx = 1.0;
-    panel.add(txtPass1, gbc);
-
-    // ===== Fila 3: Confirmar contraseña =====
-    gbc.gridx = 0; gbc.gridy = 2;
-    gbc.fill = GridBagConstraints.NONE;
-    gbc.weightx = 0;
-    panel.add(new JLabel(iconPass), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("Confirmar contraseña:"), gbc);
-    gbc.gridx = 2;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.weightx = 1.0;
-    panel.add(txtPass2, gbc);
-
-    // Mostrar JOptionPane más amplio
-    int option = JOptionPane.showConfirmDialog(
-        this,
-        panel,
-        "Alta de empleado",
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE
-    );
-
-    // Validar datos si pulsa "Aceptar"
-    
-            if (option == JOptionPane.OK_OPTION) {
-        String dni = txtDni.getText().trim();
-        String pass1 = new String(txtPass1.getPassword());
-        String pass2 = new String(txtPass2.getPassword());
-
-        if (dni.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                "Todos los campos son obligatorios.",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-            return;
+// Decoración
+        Dimension campoSize = new Dimension(220, 30);
+        JComponent[] campos = {txtNombre, txtApellido, txtDni, txtUsuario, txtPass, cmbRol};
+        for (JComponent c : campos) {
+            c.setPreferredSize(campoSize);
+            c.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                    BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         }
 
-        if (!pass1.equals(pass2)) {
-            JOptionPane.showMessageDialog(this,
-                "Las contraseñas no coinciden.",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-            return;
+// Truco: Copiar DNI a Usuario automáticamente al escribir
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuario.setText(txtDni.getText());
+            }
+        });
+
+// --- 3. ARMANDO EL PANEL ---
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBackground(fondo);
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(8, 10, 8, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.WEST;
+
+// Título
+        JLabel lblTitulo = new JLabel("Registrar Nuevo Empleado");
+        lblTitulo.setFont(fuenteTitulo);
+        lblTitulo.setForeground(new Color(50, 50, 150));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(0, 10, 20, 10);
+        panel.add(lblTitulo, gbc);
+
+// Reset para campos
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(5, 10, 5, 10);
+
+// Añadimos los campos (YA NO ESTÁ EL CHECKBOX)
+        agregarCampo(panel, gbc, 1, "Nombre:", txtNombre, fuenteLabel);
+        agregarCampo(panel, gbc, 2, "Apellido:", txtApellido, fuenteLabel);
+        agregarCampo(panel, gbc, 3, "DNI:", txtDni, fuenteLabel);
+        agregarCampo(panel, gbc, 4, "Usuario:", txtUsuario, fuenteLabel);
+        agregarCampo(panel, gbc, 5, "Contraseña:", txtPass, fuenteLabel);
+        agregarCampo(panel, gbc, 6, "Rol:", cmbRol, fuenteLabel);
+
+// --- 4. MOSTRAR DIÁLOGO ---
+        int option = JOptionPane.showConfirmDialog(this, panel, "Nuevo Empleado",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+// --- 5. LÓGICA DE GUARDADO ---
+        if (option == JOptionPane.OK_OPTION) {
+            // A. Capturar datos
+            String nombre = txtNombre.getText().trim();
+            String apellido = txtApellido.getText().trim();
+            String dni = txtDni.getText().trim();
+            String usuario = txtUsuario.getText().trim();
+            String password = new String(txtPass.getPassword());
+            com.supermercado.modelos.Rol rol = (com.supermercado.modelos.Rol) cmbRol.getSelectedItem();
+
+            // B. Validación
+            if (nombre.isEmpty() || usuario.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nombre, Usuario y Contraseña son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                // C. Crear Objeto
+                com.supermercado.modelos.Empleado emp = new com.supermercado.modelos.Empleado();
+                emp.setNombre(nombre);
+                emp.setApellido(apellido);
+                emp.setDni(dni);
+                emp.setUsuario(usuario);
+                emp.setPassword(password);
+                emp.setRol(rol);
+
+                // IMPORTANTE: Lo activamos por defecto internamente
+                // Si no hacemos esto, no podrá iniciar sesión
+                emp.setActivo(true);
+
+                // ... dentro del try ...
+// D. Guardar
+                com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
+                dao.registrar(emp);
+
+// =================================================================
+// TRAZABILIDAD
+// =================================================================
+                try {
+                    com.supermercado.modelos.Empleado admin = com.supermercado.util.Sesion.getEmpleado();
+                    String accion = "Registró al nuevo empleado: " + emp.getDni();
+                    new com.supermercado.dao.LogDAO().registrarLog(admin, accion);
+                } catch (Exception e) {
+                    System.out.println("Error al guardar log: " + e.getMessage());
+                }
+// =================================================================
+
+                JOptionPane.showMessageDialog(this, "¡Empleado creado correctamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al guardar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-
-        JOptionPane.showMessageDialog(this,
-            "Empleado dado de alta correctamente.",
-            "Éxito",
-            JOptionPane.INFORMATION_MESSAGE,
-            iconCheck);
-        
-    }
-       
-    
-
-
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnAltaActionPerformed
 
+    private void agregarCampo(JPanel p, GridBagConstraints g, int fila, String texto, JComponent campo, Font f) {
+    g.gridy = fila;
+    g.gridx = 0;
+    JLabel label = new JLabel(texto);
+    label.setFont(f);
+    p.add(label, g);
+    
+    g.gridx = 1;
+    p.add(campo, g);
+}
+    
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
     this.dispose(); // Cierra la ventana actual
     Gestión_empleados nuevaVentana = new Gestión_empleados(); // Crea una nueva instancia
@@ -347,151 +381,267 @@ pnlHome.repaint();
     }//GEN-LAST:event_btnRecargarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-     // Iconos
-    ImageIcon iconDni = new ImageIcon(getClass().getResource("/dni.png"));
-    ImageIcon iconPass = new ImageIcon(getClass().getResource("/contraseña.png"));
-    ImageIcon iconCheck = new ImageIcon(getClass().getResource("/check.png"));
+        // 1. --- PREPARAR DATOS (DAO) ---
+        com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
+        java.util.List<com.supermercado.modelos.Empleado> listaEmpleados = dao.listarTodos();
 
-    // Campos
-    JTextField txtDni = new JTextField();
-    JTextField txtNuevoNombre = new JTextField();
-    JPasswordField txtNuevaPass = new JPasswordField();
-
-    // Tamaño de campos
-    Dimension fieldSize = new Dimension(240, 28);
-    txtDni.setPreferredSize(fieldSize);
-    txtNuevoNombre.setPreferredSize(fieldSize);
-    txtNuevaPass.setPreferredSize(fieldSize);
-
-    // Panel con GridBagLayout
-    JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(new Color(245, 245, 245));
-    panel.setPreferredSize(new Dimension(450, 200));
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10);
-    gbc.anchor = GridBagConstraints.WEST;
-
-    // ===== Fila 1: DNI =====
-    gbc.gridx = 0; gbc.gridy = 0;
-    panel.add(new JLabel(iconDni), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("DNI del empleado:"), gbc);
-    gbc.gridx = 2;
-    panel.add(txtDni, gbc);
-
-    // ===== Fila 2: Nuevo nombre =====
-    gbc.gridx = 0; gbc.gridy = 1;
-    panel.add(new JLabel(iconDni), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("Nuevo nombre:"), gbc);
-    gbc.gridx = 2;
-    panel.add(txtNuevoNombre, gbc);
-
-    // ===== Fila 3: Nueva contraseña =====
-    gbc.gridx = 0; gbc.gridy = 2;
-    panel.add(new JLabel(iconPass), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("Nueva contraseña:"), gbc);
-    gbc.gridx = 2;
-    panel.add(txtNuevaPass, gbc);
-
-    // Mostrar JOptionPane
-    int option = JOptionPane.showConfirmDialog(
-        this,
-        panel,
-        "Modificar empleado",
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE
-    );
-
-    if (option == JOptionPane.OK_OPTION) {
-        String dni = txtDni.getText().trim();
-        String nuevoNombre = txtNuevoNombre.getText().trim();
-        String nuevaPass = new String(txtNuevaPass.getPassword());
-
-        if (dni.isEmpty() || nuevoNombre.isEmpty() || nuevaPass.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                "Todos los campos son obligatorios.",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+// Si no hay empleados, avisamos y salimos
+        if (listaEmpleados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay empleados registrados para modificar.");
             return;
         }
 
-        // Mostrar mensaje simulado de modificación
-        JOptionPane.showMessageDialog(this,
-            "Empleado con DNI " + dni + " modificado correctamente.\n"
-            + "Nuevo nombre: " + nuevoNombre,
-            "Modificación realizada",
-            JOptionPane.INFORMATION_MESSAGE,
-            iconCheck);
-          }
+// 2. --- COMPONENTES VISUALES ---
+// El desplegable (JComboBox) con los objetos Empleado directos
+        JComboBox<com.supermercado.modelos.Empleado> cmbEmpleados = new JComboBox<>();
+        for (com.supermercado.modelos.Empleado e : listaEmpleados) {
+            cmbEmpleados.addItem(e);
+        }
 
+// Campos para editar
+        JTextField txtDni = new JTextField();
+        JTextField txtUsuario = new JTextField(); // Este será de solo lectura para ver el efecto
+        JTextField txtNombre = new JTextField();
+        JTextField txtApellido = new JTextField();
+        JPasswordField txtPass = new JPasswordField();
+
+// Configuración estética
+        txtUsuario.setEditable(false); // El usuario se cambia solo, no se toca a mano
+        txtUsuario.setBackground(new Color(230, 230, 230)); // Gris para indicar que es automático
+
+        Dimension campoSize = new Dimension(220, 30);
+        JComponent[] campos = {cmbEmpleados, txtDni, txtUsuario, txtNombre, txtApellido, txtPass};
+        for (JComponent c : campos) {
+            c.setPreferredSize(campoSize);
+        }
+
+// 3. --- EVENTOS MÁGICOS (LISTENERS) ---
+// A. Cuando seleccionas a alguien en el desplegable -> Rellenar campos
+        cmbEmpleados.addActionListener(e -> {
+            com.supermercado.modelos.Empleado seleccionado = (com.supermercado.modelos.Empleado) cmbEmpleados.getSelectedItem();
+            if (seleccionado != null) {
+                txtDni.setText(seleccionado.getDni());
+                txtUsuario.setText(seleccionado.getUsuario());
+                txtNombre.setText(seleccionado.getNombre());
+                txtApellido.setText(seleccionado.getApellido());
+                txtPass.setText(""); // La contraseña se deja vacía por seguridad (solo llenar si se quiere cambiar)
+            }
+        });
+
+// B. Cuando escribes en el DNI -> Se copia al Usuario en tiempo real
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuario.setText(txtDni.getText());
+            }
+        });
+
+// Forzamos la selección del primero para llenar los campos al abrir la ventana
+        if (cmbEmpleados.getItemCount() > 0) {
+            cmbEmpleados.setSelectedIndex(0);
+        }
+
+// 4. --- PANEL VISUAL (DISEÑO) ---
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBackground(Color.WHITE);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.anchor = GridBagConstraints.WEST;
+
+// Usamos tu método auxiliar 'agregarCampo'
+        agregarCampo(panel, gbc, 0, "Seleccionar Empleado:", cmbEmpleados, new Font("Segoe UI", Font.BOLD, 13));
+
+// Separador visual
+        gbc.gridy = 1;
+        panel.add(new JSeparator(), gbc);
+
+        agregarCampo(panel, gbc, 2, "DNI (Editable):", txtDni, new Font("Segoe UI", Font.PLAIN, 13));
+        agregarCampo(panel, gbc, 3, "Usuario (Automático):", txtUsuario, new Font("Segoe UI", Font.PLAIN, 13));
+        agregarCampo(panel, gbc, 4, "Nombre:", txtNombre, new Font("Segoe UI", Font.PLAIN, 13));
+        agregarCampo(panel, gbc, 5, "Apellido:", txtApellido, new Font("Segoe UI", Font.PLAIN, 13));
+        agregarCampo(panel, gbc, 6, "Nueva Contraseña:", txtPass, new Font("Segoe UI", Font.PLAIN, 13));
+
+// 5. --- MOSTRAR Y GUARDAR ---
+        int option = JOptionPane.showConfirmDialog(this, panel, "Modificar Empleado", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (option == JOptionPane.OK_OPTION) {
+            try {
+                // 1. OBTENER EL ORIGINAL (El "Antes")
+                com.supermercado.modelos.Empleado original = (com.supermercado.modelos.Empleado) cmbEmpleados.getSelectedItem();
+                String dniOriginal = original.getDni();
+
+                // 2. OBTENER LOS NUEVOS DATOS (El "Después")
+                String nuevoDni = txtDni.getText().trim();
+                String nuevoNombre = txtNombre.getText().trim();
+                String nuevoApellido = txtApellido.getText().trim();
+                String nuevaPass = new String(txtPass.getPassword());
+
+                if (nuevoDni.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El DNI no puede estar vacío.");
+                    return;
+                }
+
+                // =====================================================================
+                // 3. EL DETECTIVE: Comparar qué ha cambiado
+                // Usamos StringBuilder que es como una "bolsa" para ir metiendo textos
+                // =====================================================================
+                StringBuilder cambiosDetectados = new StringBuilder();
+
+                // A. Comprobar DNI
+                if (!original.getDni().equals(nuevoDni)) {
+                    cambiosDetectados.append("[DNI: '").append(original.getDni()).append("' -> '").append(nuevoDni).append("'] ");
+                }
+
+                // B. Comprobar Nombre
+                if (!original.getNombre().equals(nuevoNombre)) {
+                    cambiosDetectados.append("[Nombre: '").append(original.getNombre()).append("' -> '").append(nuevoNombre).append("'] ");
+                }
+
+                // C. Comprobar Apellido
+                // (Usamos un truco por si el apellido original era null para evitar errores)
+                String apellidoViejo = (original.getApellido() == null) ? "" : original.getApellido();
+                if (!apellidoViejo.equals(nuevoApellido)) {
+                    cambiosDetectados.append("[Apellido: '").append(apellidoViejo).append("' -> '").append(nuevoApellido).append("'] ");
+                }
+
+                // D. Comprobar Contraseña (Solo indicamos que cambió, no mostramos la clave por seguridad)
+                if (!nuevaPass.isEmpty()) {
+                    cambiosDetectados.append("[Contraseña cambiada] ");
+                }
+
+                // Si no hubo cambios, no molestamos a la base de datos
+                if (cambiosDetectados.length() == 0) {
+                    JOptionPane.showMessageDialog(this, "No realizaste ningún cambio en los datos.");
+                    return;
+                }
+                // =====================================================================
+
+                // 4. LLAMAR AL DAO PARA GUARDAR
+                boolean exito = dao.modificar(dniOriginal, nuevoDni, nuevoNombre, nuevoApellido, nuevaPass);
+
+                if (exito) {
+                    // =================================================================
+                    // 5. GUARDAR EN EL LOG CON DETALLES
+                    // =================================================================
+                    try {
+                        com.supermercado.modelos.Empleado admin = com.supermercado.util.Sesion.getEmpleado();
+
+                        // El mensaje final será tipo: "Modificó a 1234A: [Nombre: 'Juan' -> 'Pedro'] [Apellido...]"
+                        String accion = "Modificó a " + dniOriginal + ": " + cambiosDetectados.toString();
+
+                        new com.supermercado.dao.LogDAO().registrarLog(admin, accion);
+
+                    } catch (Exception e) {
+                        System.out.println("Error log: " + e.getMessage());
+                    }
+                    // =================================================================
+
+                    JOptionPane.showMessageDialog(this, "¡Empleado actualizado correctamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Opcional: Recargar el desplegable por si cambiaste el nombre y quieres verlo actualizado al instante
+                    // (Si tienes el código del desplegable en una función aparte, llámala aquí)
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al actualizar.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error crítico: " + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
-   // Iconos
-    ImageIcon iconDni = new ImageIcon(getClass().getResource("/dni.png"));
-    ImageIcon iconCheck = new ImageIcon(getClass().getResource("/check.png"));
+        // 1. --- PREPARAR DATOS ---
+        com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
+        java.util.List<com.supermercado.modelos.Empleado> listaEmpleados = dao.listarTodos();
 
-    // Campo para el DNI
-    JTextField txtDni = new JTextField();
-    txtDni.setPreferredSize(new Dimension(260, 28)); // Más ancho
-
-    // Panel principal con GridBagLayout
-    JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(new Color(245, 245, 245));
-    panel.setPreferredSize(new Dimension(500, 180)); // Más grande horizontalmente
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(15, 15, 15, 15);
-    gbc.anchor = GridBagConstraints.WEST;
-
-    // ===== Fila 1: DNI =====
-    gbc.gridx = 0; gbc.gridy = 0;
-    panel.add(new JLabel(iconDni), gbc);
-    gbc.gridx = 1;
-    panel.add(new JLabel("DNI del empleado a eliminar:"), gbc);
-    gbc.gridx = 2;
-    gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.weightx = 1.0;
-    panel.add(txtDni, gbc);
-
-    // Mostrar JOptionPane
-    int option = JOptionPane.showConfirmDialog(
-        this,
-        panel,
-        "Eliminar empleado",
-        JOptionPane.OK_CANCEL_OPTION,
-        JOptionPane.PLAIN_MESSAGE
-    );
-
-    if (option == JOptionPane.OK_OPTION) {
-        String dni = txtDni.getText().trim();
-
-        if (dni.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                "Debes introducir el DNI del empleado.",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        if (listaEmpleados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay empleados registrados para eliminar.");
             return;
         }
 
-        // Confirmación antes de eliminar
-        int confirm = JOptionPane.showConfirmDialog(
-            this,
-            "¿Seguro que quieres eliminar al empleado con DNI " + dni + "?",
-            "Confirmar eliminación",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.WARNING_MESSAGE
-        );
+// 2. --- CONFIGURACIÓN VISUAL ---
+        Color fondo = new Color(255, 255, 255);
+        Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 14);
 
-        if (confirm == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(this,
-                "Empleado con DNI " + dni + " eliminado correctamente.",
-                "Eliminación completada",
-                JOptionPane.INFORMATION_MESSAGE,
-                iconCheck);
+// 3. --- CREAR DESPLEGABLE ---
+        JComboBox<com.supermercado.modelos.Empleado> cmbEmpleados = new JComboBox<>();
+        for (com.supermercado.modelos.Empleado e : listaEmpleados) {
+            cmbEmpleados.addItem(e); // Gracias al toString() se verán los nombres bonitos
         }
-    }
+        cmbEmpleados.setPreferredSize(new Dimension(250, 30));
+
+// 4. --- PANEL DE DISEÑO ---
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBackground(fondo);
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+// Icono de advertencia (opcional, usa uno del sistema si no tienes imagen)
+        JLabel lblIcono = new JLabel(UIManager.getIcon("OptionPane.warningIcon"));
+        panel.add(lblIcono, gbc);
+
+// Texto y Desplegable
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        JLabel lblTexto = new JLabel("Seleccione el empleado a eliminar:");
+        lblTexto.setFont(fuenteTitulo);
+        panel.add(lblTexto, gbc);
+
+        gbc.gridy = 1;
+        panel.add(cmbEmpleados, gbc);
+
+// Mensaje de aviso en rojo
+        gbc.gridy = 2;
+        JLabel lblAviso = new JLabel("<html><font color='red'>¡Atención! Esta acción no se puede deshacer.</font></html>");
+        panel.add(lblAviso, gbc);
+
+// 5. --- MOSTRAR DIÁLOGO ---
+        int option = JOptionPane.showConfirmDialog(this, panel, "Eliminar Empleado",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+// 6. --- LÓGICA DE BORRADO ---
+        if (option == JOptionPane.OK_OPTION) {
+            try {
+                // Obtenemos el empleado seleccionado
+                com.supermercado.modelos.Empleado seleccionado = (com.supermercado.modelos.Empleado) cmbEmpleados.getSelectedItem();
+
+                // Confirmación extra de seguridad
+                int confirm = JOptionPane.showConfirmDialog(this,
+                        "¿Seguro que deseas eliminar a " + seleccionado.getNombre() + "?",
+                        "Confirmar eliminación",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    boolean eliminado = dao.eliminar(seleccionado.getDni());
+
+                    if (eliminado) {
+                        // =================================================================
+                        // TRAZABILIDAD
+                        // =================================================================
+                        try {
+                            com.supermercado.modelos.Empleado admin = com.supermercado.util.Sesion.getEmpleado();
+                            String accion = "Eliminó al empleado: " + seleccionado.getDni() + " (" + seleccionado.getNombre() + ")";
+                            new com.supermercado.dao.LogDAO().registrarLog(admin, accion);
+                        } catch (Exception e) {
+                            System.out.println("Error al guardar log: " + e.getMessage());
+                        }
+                        // =================================================================
+
+                        JOptionPane.showMessageDialog(this, "Empleado eliminado correctamente.");
+                    } else {
+                        // ... mensaje de error ...
+                    }
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error crítico: " + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnBajaActionPerformed
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
