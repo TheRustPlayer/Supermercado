@@ -51,15 +51,12 @@ public class Acceso_clientes extends javax.swing.JFrame {
         pnlPantalla = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png");
         pnlPantalla = new com.mycompany.supermercadoproyecto.recursos.BackgroundPanel("/fondo.png") ;
         jLabel2 = new javax.swing.JLabel();
-        btnAñadir = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtDNI = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,140 +96,14 @@ public class Acceso_clientes extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Acceso a clientes");
+        jLabel2.setText("BIENVENIDO A TU MARKET DE CONFIANZA");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.ipady = -4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 118, 0, 0);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
         pnlPantalla.add(jLabel2, gridBagConstraints);
-
-        btnAñadir.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        btnAñadir.setText("Añadir");
-        btnAñadir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        btnAñadir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAñadirActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 89;
-        gridBagConstraints.ipady = 47;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(56, 12, 0, 0);
-        pnlPantalla.add(btnAñadir, gridBagConstraints);
-
-        btnModificar.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 61;
-        gridBagConstraints.ipady = 47;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(56, 87, 0, 0);
-        pnlPantalla.add(btnModificar, gridBagConstraints);
-
-        btnEliminar.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 72;
-        gridBagConstraints.ipady = 47;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(56, 64, 0, 97);
-        pnlPantalla.add(btnEliminar, gridBagConstraints);
-
-        txtNombre.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        txtNombre.setForeground(java.awt.Color.gray);
-        txtNombre.setText("Introduce el nombre del cliente...");
-        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreFocusLost(evt);
-            }
-        });
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 426;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(72, 12, 0, 0);
-        pnlPantalla.add(txtNombre, gridBagConstraints);
-
-        txtApellido.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        txtApellido.setForeground(java.awt.Color.gray);
-        txtApellido.setText("Introduce el apellido del cliente...");
-        txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtApellidoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtApellidoFocusLost(evt);
-            }
-        });
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellido(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 345;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
-        pnlPantalla.add(txtApellido, gridBagConstraints);
-
-        txtDNI.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        txtDNI.setForeground(java.awt.Color.gray);
-        txtDNI.setText("Introduce el DNI del cliente...");
-        txtDNI.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDNIFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDNIFocusLost(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 387;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 12, 60, 0);
-        pnlPantalla.add(txtDNI, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -252,13 +123,22 @@ public class Acceso_clientes extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(12, 39, 60, 0);
         pnlPantalla.add(jLabel4, gridBagConstraints);
 
+        jButton4.setText("jButton4");
+        pnlPantalla.add(jButton4, new java.awt.GridBagConstraints());
+
+        jButton5.setText("jButton5");
+        pnlPantalla.add(jButton5, new java.awt.GridBagConstraints());
+
+        jButton6.setText("jButton6");
+        pnlPantalla.add(jButton6, new java.awt.GridBagConstraints());
+
         pnlPrincipal.add(pnlPantalla, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,129 +171,6 @@ public class Acceso_clientes extends javax.swing.JFrame {
     herramientas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnOpcionesActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        JOptionPane.showMessageDialog(this, "Se ha eliminado el cliente con éxito");
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void txtApellido(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellido
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellido
-
-    private void txtNombre(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtNombre
-
-    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
-        if (txtNombre.getText().equals("Introduce el nombre del cliente...")) {
-            txtNombre.setText("");
-            txtNombre.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_txtNombreFocusGained
-
-    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        if (txtNombre.getText().isEmpty()) {
-            txtNombre.setForeground(Color.GRAY);
-            txtNombre.setText("Introduce el nombre del cliente...");
-        }
-    }//GEN-LAST:event_txtNombreFocusLost
-
-    private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
-        // TODO add your handling code here:
-         if (txtApellido.getText().equals("Introduce el apellido del cliente...")) {
-            txtApellido.setText("");
-            txtApellido.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_txtApellidoFocusGained
-
-    private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
-        // TODO add your handling code here:
-         if (txtApellido.getText().isEmpty()) {
-            txtApellido.setForeground(Color.GRAY);
-            txtApellido.setText("Introduce el apellido del cliente...");
-        }
-    }//GEN-LAST:event_txtApellidoFocusLost
-
-    private void txtDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusGained
-        // TODO add your handling code here:
-         if (txtDNI.getText().equals("Introduce el DNI del cliente...")) {
-            txtDNI.setText("");
-            txtDNI.setForeground(Color.BLACK);
-        }
-    }//GEN-LAST:event_txtDNIFocusGained
-
-    private void txtDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDNIFocusLost
-        // TODO add your handling code here:
-        if (txtDNI.getText().isEmpty()) {
-            txtDNI.setForeground(Color.GRAY);
-            txtDNI.setText("Introduce el apellido del cliente...");
-        }
-    }//GEN-LAST:event_txtDNIFocusLost
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-      JTextField txtNombre = new JTextField();
-    JTextField txtApellido = new JTextField();
-    JTextField txtDni = new JTextField();
-
-    Dimension d = new Dimension(220, 28);
-    txtNombre.setPreferredSize(d);
-    txtApellido.setPreferredSize(d);
-    txtDni.setPreferredSize(d);
-
-    JPanel panel = new JPanel(new GridBagLayout());
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10);
-    gbc.anchor = GridBagConstraints.WEST;
-
-    // Nombre
-    gbc.gridx = 0; gbc.gridy = 0;
-    panel.add(new JLabel("Nombre:"), gbc);
-    gbc.gridx = 1;
-    panel.add(txtNombre, gbc);
-
-    // Apellido
-    gbc.gridx = 0; gbc.gridy = 1;
-    panel.add(new JLabel("Apellido:"), gbc);
-    gbc.gridx = 1;
-    panel.add(txtApellido, gbc);
-
-    // DNI
-    gbc.gridx = 0; gbc.gridy = 2;
-    panel.add(new JLabel("DNI:"), gbc);
-    gbc.gridx = 1;
-    panel.add(txtDni, gbc);
-
-    int option = JOptionPane.showConfirmDialog(
-            this,
-            panel,
-            "Modificar cliente",
-            JOptionPane.OK_CANCEL_OPTION
-    );
-
-    if (option == JOptionPane.OK_OPTION) {
-
-        if (txtNombre.getText().trim().isEmpty() ||
-            txtApellido.getText().trim().isEmpty() ||
-            txtDni.getText().trim().isEmpty()) {
-
-            JOptionPane.showMessageDialog(this,
-                    "Todos los campos son obligatorios.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        JOptionPane.showMessageDialog(this,
-                "Cliente modificado correctamente.",
-                "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    
-
-    }// TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirActionPerformed
-JOptionPane.showMessageDialog(this, "Se ha añadido el cliente con éxito");        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAñadirActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -440,12 +197,12 @@ JOptionPane.showMessageDialog(this, "Se ha añadido el cliente con éxito");    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAñadir;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton btnRecargar;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -453,8 +210,5 @@ JOptionPane.showMessageDialog(this, "Se ha añadido el cliente con éxito");    
     private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlPantalla;
     private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
