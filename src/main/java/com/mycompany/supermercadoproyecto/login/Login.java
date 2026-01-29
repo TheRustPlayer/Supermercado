@@ -9,7 +9,18 @@ import com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrado
 import com.supermercado.dao.EmpleadoDAO;
 import com.supermercado.modelos.Empleado;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -86,6 +97,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +108,7 @@ public class Login extends javax.swing.JFrame {
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setText("DNI/NIF...");
-        jTextField1.setPreferredSize(new java.awt.Dimension(150, 26));
+        jTextField1.setPreferredSize(new java.awt.Dimension(150, 33));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -107,7 +119,7 @@ public class Login extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setText("Contraseña...");
         jTextField2.setMinimumSize(new java.awt.Dimension(64, 25));
-        jTextField2.setPreferredSize(new java.awt.Dimension(150, 22));
+        jTextField2.setPreferredSize(new java.awt.Dimension(150, 33));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -115,6 +127,7 @@ public class Login extends javax.swing.JFrame {
         pnlHome.add(jTextField2, gridBagConstraints);
 
         jButton1.setText("INICIAR SESION");
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 22));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -122,9 +135,21 @@ public class Login extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(17, 17, 17, 17);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(17, 17, 3, 17);
         pnlHome.add(jButton1, gridBagConstraints);
+
+        jButton2.setText("¿No tienes usuario?");
+        jButton2.setPreferredSize(new java.awt.Dimension(150, 22));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        pnlHome.add(jButton2, gridBagConstraints);
 
         pnlPrincipal.add(pnlHome, java.awt.BorderLayout.CENTER);
 
@@ -138,69 +163,86 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-/// 1. Obtener datos
-String dni = jTextField1.getText();
-        String pass = jTextField2.getText();
+    
+    // 1. Obtener y limpiar datos
+    String dni = jTextField1.getText().trim();
+    String pass = new String(jTextField2.getText()); 
 
-// 2. Comprobar vacíos
-        if (dni.isEmpty() || pass.isEmpty() || dni.equals("DNI/NIF...") || pass.equals("Contraseña...")) {
-            JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.");
-            return;
-        }
+    // 2. Validación de campos vacíos o placeholders
+    if (dni.isEmpty() || pass.isEmpty() || dni.equals("DNI/NIF...") || pass.equals("Contraseña...")) {
+        JOptionPane.showMessageDialog(this, "Por favor, rellene todos los campos.", "Campos incompletos", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
 
-// 3. Llamar al DAO
-        com.supermercado.dao.EmpleadoDAO dao = new com.supermercado.dao.EmpleadoDAO();
-        com.supermercado.modelos.Empleado empleado = dao.validarLogin(dni, pass);
+    // 3. INTENTO 1: Buscar en la tabla de Empleados
+    com.supermercado.dao.EmpleadoDAO empDao = new com.supermercado.dao.EmpleadoDAO();
+    com.supermercado.modelos.Empleado empleado = empDao.validarLogin(dni, pass);
 
-// 4. Evaluar resultado
-        if (empleado != null) {
+    if (empleado != null) {
+        ejecutarLoginEmpleado(empleado);
+    } else {
+        // 4. INTENTO 2: Si no es empleado, buscar en la tabla de Clientes
+        com.supermercado.dao.ClienteDAO cliDao = new com.supermercado.dao.ClienteDAO();
+        com.supermercado.modelos.Cliente cliente = cliDao.validarLogin(dni, pass);
 
-            // =========================================================================
-            // 1. GUARDAR EN SESIÓN GLOBAL (Para saber quién es más tarde)
-            // =========================================================================
-            com.supermercado.util.Sesion.setEmpleado(empleado); // <--- NUEVO
-
-            // =========================================================================
-            // 2. REGISTRAR EN LA BASE DE DATOS (Para el historial/informe)
-            // =========================================================================
-            try {
-                com.supermercado.dao.LogDAO logDao = new com.supermercado.dao.LogDAO();
-                logDao.registrarLog(empleado, "Inicio de sesión"); // <--- NUEVO
-            } catch (Exception ex) {
-                System.err.println("No se pudo guardar el log: " + ex.getMessage());
-            }
-            // =========================================================================
-
-            JOptionPane.showMessageDialog(this, "Bienvenido, " + empleado.getNombre());
-
-            try {
-                if (empleado.getRol().name().equals("admin") || empleado.getRol().name().equals("gerente")) {
-                    // --- ADMIN ---
-                    com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador ventanaAdmin
-                            = new com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador();
-                    ventanaAdmin.setVisible(true);
-                    ventanaAdmin.setLocationRelativeTo(null);
-                } else {
-                    // --- HOME NORMAL ---
-                    com.mycompany.supermercadoproyecto.login.Home ventanaHome
-                            = new com.mycompany.supermercadoproyecto.login.Home();
-                    ventanaHome.setVisible(true);
-                    ventanaHome.setLocationRelativeTo(null);
-                }
-
-                this.dispose();
-
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Error al abrir ventana: " + ex.getMessage());
-            }
-
+        if (cliente != null) {
+            ejecutarLoginCliente(cliente);
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "Usuario o contraseña incorrectos",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            // 5. Fallo total
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error de acceso", JOptionPane.ERROR_MESSAGE);
         }
+    }
+}
+
+// --- MÉTODOS AUXILIARES PARA MANTENER EL CÓDIGO LIMPIO ---
+
+private void ejecutarLoginEmpleado(com.supermercado.modelos.Empleado empleado) {
+    com.supermercado.util.Sesion.setEmpleado(empleado);
+    
+    // Registro de Log
+    try {
+        new com.supermercado.dao.LogDAO().registrarLog(empleado, "Inicio de sesión");
+    } catch (Exception ex) {
+        System.err.println("Error en Log: " + ex.getMessage());
+    }
+
+    JOptionPane.showMessageDialog(this, "Bienvenido, " + empleado.getNombre());
+
+    try {
+        String rol = empleado.getRol().name().toLowerCase();
+        if (rol.equals("admin") || rol.equals("gerente")) {
+            com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador vAdmin = new com.mycompany.supermercadoproyecto.administrador.HerramientasAdministrador();
+            vAdmin.setVisible(true);
+            vAdmin.setLocationRelativeTo(null);
+        } else {
+            com.mycompany.supermercadoproyecto.login.Home vHome = new com.mycompany.supermercadoproyecto.login.Home();
+            vHome.setVisible(true);
+            vHome.setLocationRelativeTo(null);
+        }
+        this.dispose();
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al abrir ventana: " + ex.getMessage());
+    }
+}
+
+private void ejecutarLoginCliente(com.supermercado.modelos.Cliente cliente) {
+    JOptionPane.showMessageDialog(this, "Bienvenido Cliente: " + cliente.getNombre());
+    
+    try {
+        // Asegúrate de que esta ruta coincida con la ubicación real de tu clase
+        com.mycompany.supermercadoproyecto.Acceso_clientes vCliente = new com.mycompany.supermercadoproyecto.Acceso_clientes();
+        vCliente.setVisible(true);
+        vCliente.setLocationRelativeTo(null);
+        this.dispose();
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al abrir ventana de clientes: " + ex.getMessage());
+    }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        abrirFormularioRegistroCliente();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,9 +271,97 @@ String dni = jTextField1.getText();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
+
+    private void abrirFormularioRegistroCliente() {
+        // 1. --- ESTILO VISUAL ---
+    Color fondo = new Color(255, 255, 255);
+    Font fuenteLabel = new Font("Segoe UI", Font.PLAIN, 13);
+    
+    // 2. --- CAMPOS DEL CLIENTE ---
+    JTextField txtNombre = new JTextField();
+    JTextField txtApellido = new JTextField();
+    JTextField txtDni = new JTextField();
+    JTextField txtTelefono = new JTextField();
+    JTextField txtEmail = new JTextField();
+    JPasswordField txtPass = new JPasswordField();
+
+    // Configuración de tamaño
+    Dimension dim = new Dimension(220, 30);
+    JComponent[] campos = {txtNombre, txtApellido, txtDni, txtTelefono, txtEmail, txtPass};
+    for (JComponent c : campos) { c.setPreferredSize(dim); }
+
+    // 3. --- DISEÑO DEL PANEL ---
+    JPanel panel = new JPanel(new GridBagLayout());
+    panel.setBackground(fondo);
+    panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(5, 10, 5, 10);
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+
+    // Título dentro del panel
+    JLabel titulo = new JLabel("CREAR CUENTA NUEVA");
+    titulo.setFont(new Font("Segoe UI", Font.BOLD, 16));
+    titulo.setForeground(new Color(0, 102, 204));
+    gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
+    gbc.insets = new Insets(0, 10, 15, 10);
+    panel.add(titulo, gbc);
+
+    // Reset gridwidth para los campos
+    gbc.gridwidth = 1;
+    gbc.insets = new Insets(5, 10, 5, 10);
+
+    // Añadir filas (usando el método agregarCampo que ya tienes o manualmente)
+    int fila = 1;
+    String[] etiquetas = {"Nombre:", "Apellido:", "DNI:", "Teléfono:", "Email:", "Contraseña:"};
+    for (int i = 0; i < etiquetas.length; i++) {
+        gbc.gridy = fila; gbc.gridx = 0;
+        panel.add(new JLabel(etiquetas[i]), gbc);
+        gbc.gridx = 1;
+        panel.add(campos[i], gbc);
+        fila++;
+    }
+
+    // 4. --- MOSTRAR DIÁLOGO ---
+    int result = JOptionPane.showConfirmDialog(this, panel, "Registro de Cliente", 
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+    // 5. --- GUARDAR EN LA TABLA CLIENTES ---
+    if (result == JOptionPane.OK_OPTION) {
+        // Validar que no estén vacíos
+        if (txtNombre.getText().isEmpty() || txtDni.getText().isEmpty() || new String(txtPass.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nombre, DNI y Contraseña son obligatorios.");
+            return;
+        }
+
+        try {
+            com.supermercado.modelos.Cliente nuevoCli = new com.supermercado.modelos.Cliente();
+            nuevoCli.setNombre(txtNombre.getText().trim());
+            nuevoCli.setApellido(txtApellido.getText().trim());
+            nuevoCli.setDni(txtDni.getText().trim());
+            nuevoCli.setTelefono(txtTelefono.getText().trim());
+            nuevoCli.setEmail(txtEmail.getText().trim());
+            
+            // Usamos el DNI como usuario por defecto para el cliente
+            nuevoCli.setUsuario(txtDni.getText().trim());
+            nuevoCli.setPassword(new String(txtPass.getPassword()));
+            nuevoCli.setActivo(true);
+
+            // Llamamos al DAO de clientes que creamos antes
+            com.supermercado.dao.ClienteDAO dao = new com.supermercado.dao.ClienteDAO();
+            dao.registrar(nuevoCli);
+            com.supermercado.dao.LogDAO logDao = new com.supermercado.dao.LogDAO();
+            logDao.registrarLog(null, "Nuevo auto-registro de cliente: " + nuevoCli.getDni());
+            JOptionPane.showMessageDialog(this, "¡Cuenta creada con éxito! Ya puedes iniciar sesión con tu DNI.");
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al registrar cliente: " + ex.getMessage());
+        }
+    }
+    }
 }

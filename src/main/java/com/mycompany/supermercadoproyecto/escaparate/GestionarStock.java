@@ -162,6 +162,11 @@ public class GestionarStock extends javax.swing.JFrame {
         Añadirbnt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (19).png"))); // NOI18N
         Añadirbnt.setBorderPainted(false);
         Añadirbnt.setContentAreaFilled(false);
+        Añadirbnt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AñadirbntActionPerformed(evt);
+            }
+        });
         jPanel13.add(Añadirbnt, new java.awt.GridBagConstraints());
 
         eliminartbn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image (18).png"))); // NOI18N
@@ -408,6 +413,10 @@ public class GestionarStock extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_txtBuscaFocusLost
+
+    private void AñadirbntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirbntActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AñadirbntActionPerformed
 
     /**
      * @param args the command line arguments
