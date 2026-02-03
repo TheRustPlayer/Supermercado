@@ -151,6 +151,8 @@ pnlHome.repaint();
         jblEmpleados.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jblEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         jblEmpleados.setText("Gestión de empleados");
+        jblEmpleados.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jblEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
