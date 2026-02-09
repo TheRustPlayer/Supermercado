@@ -9,7 +9,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //
-    
+    private int puntos;
     private String nombre; //
     private String apellido; //
     private String dni; //
@@ -24,8 +24,11 @@ public class Cliente {
     private String password;
     private boolean activo = true;
 
+    public int getPuntos() { return puntos; }
+
     // Getters y Setters
-    public String getNombre() { return nombre; }
+    public void setPuntos(int puntos) {this.puntos = puntos;}
+    public String getNombre() {return nombre;}
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }

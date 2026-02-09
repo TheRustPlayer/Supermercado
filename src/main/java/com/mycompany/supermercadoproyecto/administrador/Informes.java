@@ -4,6 +4,12 @@
  */
 package com.mycompany.supermercadoproyecto.administrador;
 
+import com.supermercado.util.HibernateUtil;
+import com.supermercado.util.ReportManager;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import org.hibernate.Session;
 import com.supermercado.dao.LogDAO;
 import com.supermercado.modelos.Log;
 import com.supermercado.util.Sesion;
@@ -60,7 +66,11 @@ public class Informes extends javax.swing.JFrame {
         contenedorAbajo = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaPromocionesReportes = new javax.swing.JList<>();
@@ -169,13 +179,63 @@ public class Informes extends javax.swing.JFrame {
 
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jLabel8.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
-        jLabel8.setText("<html>{nombre}<br><br>Infomación<br> del admin <br><br><br> NIF:<br> {nif} <br> <br><br>Teléfono: <br>{telefono} </html>");
-        jLabel8.setPreferredSize(new java.awt.Dimension(100, 400));
+        jButton1.setText("Clientes");
+        jButton1.setPreferredSize(new java.awt.Dimension(110, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
-        gridBagConstraints.weighty = 1.0;
-        jPanel9.add(jLabel8, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(19, 19, 19, 19);
+        jPanel9.add(jButton1, gridBagConstraints);
+
+        jButton2.setText("Productos/cat");
+        jButton2.setPreferredSize(new java.awt.Dimension(110, 30));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(19, 19, 19, 19);
+        jPanel9.add(jButton2, gridBagConstraints);
+
+        jButton3.setText("TopVentas");
+        jButton3.setPreferredSize(new java.awt.Dimension(110, 30));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.insets = new java.awt.Insets(19, 19, 19, 19);
+        jPanel9.add(jButton3, gridBagConstraints);
+
+        jButton4.setText("Diario");
+        jButton4.setPreferredSize(new java.awt.Dimension(110, 30));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(19, 19, 19, 19);
+        jPanel9.add(jButton4, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("GENERADOR DE INFORMES");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(17, 17, 17, 17);
+        jPanel9.add(jLabel3, gridBagConstraints);
 
         jPanel8.add(jPanel9);
 
@@ -269,6 +329,42 @@ public class Informes extends javax.swing.JFrame {
     herramientas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnOpcionesActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Session session = HibernateUtil.getSessionFactory().openSession();
+    session.doWork(conn -> {
+        ReportManager.lanzarInforme("ProductosCAT.jasper", null, conn);
+    });
+    session.close();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Session session = HibernateUtil.getSessionFactory().openSession();
+    session.doWork(conn -> {
+        ReportManager.lanzarInforme("Cliente.jasper", null, conn);
+    });
+    session.close();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Session session = HibernateUtil.getSessionFactory().openSession();
+    session.doWork(conn -> {
+        Map<String, Object> params = new HashMap<>();
+        params.put("FECHA_CAJA", new java.util.Date()); // Enviamos la fecha de hoy
+        ReportManager.lanzarInforme("TOPVentas.jasper", params, conn);
+    });
+    session.close();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Session session = HibernateUtil.getSessionFactory().openSession();
+    session.doWork(conn -> {
+        Map<String, Object> params = new HashMap<>();
+        params.put("FECHA_VENTA", new java.util.Date()); // Enviamos la fecha de hoy
+        ReportManager.lanzarInforme("Ventas.jasper", params, conn);
+    });
+    session.close();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -302,9 +398,13 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JPanel contenedorArriba;
     private javax.swing.JPanel contenedorPrincipal;
     private javax.swing.JLabel dniAdministradorJlb;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
@@ -331,13 +431,6 @@ public class Informes extends javax.swing.JFrame {
         if (Sesion.getEmpleado() != null) {
             nombreAdmJlb.setText(Sesion.getEmpleado().getNombre().toUpperCase());
             dniAdministradorJlb.setText(Sesion.getEmpleado().getDni());
-
-            // Actualizar el panel lateral derecho con info detallada
-            String infoHtml = "<html>" + Sesion.getEmpleado().getNombre() + "<br><br>"
-                    + "Información<br> del admin <br><br><br>"
-                    + "NIF:<br> " + Sesion.getEmpleado().getDni() + " <br> <br><br>"
-                    + "Teléfono: <br>" + "No disponible" + " </html>"; // Si añades teléfono a Empleado, ponlo aquí
-            jLabel8.setText(infoHtml);
         }
 
         // B. Preparar herramientas para leer Logs
